@@ -1,5 +1,5 @@
+import LoginPage from "./assets/components/pages/LoginPage.jsx"
 
-import LoginPage from './assets/components/pages/LoginPage'
 
 
 function App() {
