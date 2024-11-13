@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-const LoginPage = () => {
-  const [inputValue, setInputValue] = useState("");
+const LoginForm = () => {
+    const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,13 +13,11 @@ const LoginPage = () => {
   const handleChange = (event) => { 
     setInputValue(event.target.value)
    }
-
-  return (
-    <div>
+    return (
+        <form onSubmit={handleSubmit}>
       <h1>Bienvenue chez nous !</h1>
       <br />
       <h2>Connectez-vous</h2>
-      <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Entrez votre prénom..."
@@ -29,10 +27,7 @@ const LoginPage = () => {
         />
         <button type="submit">Accédez à votre espace</button>
       </form>
-    </div>
-  );
+    );
 };
 
-export default LoginPage;
-
-
+export default LoginForm;
