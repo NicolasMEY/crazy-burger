@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
     const [inputValue, setInputValue] = useState("");
+   
 
   const handleSubmit = (e) => {
     e.preventDefault();
-      alert(`Bonjour ${inputValue}!`);
+     
       setInputValue("");
     }
   
-
   const handleChange = (event) => { 
     setInputValue(event.target.value)
    }
@@ -26,6 +27,7 @@ const LoginForm = () => {
           required
         />
         <button type="submit">Accédez à votre espace</button>
+        <Link to="/order">Vers OrderPage</Link>
       </form>
     );
 };
