@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export default function Logo() {
   return (
-    <div>Logo</div>
+    <LogoStyled>Logo CRAZY BURGER</LogoStyled>
   )
 }
 
