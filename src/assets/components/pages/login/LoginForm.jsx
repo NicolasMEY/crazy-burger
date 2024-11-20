@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import "../../../theme/index"
-import { BsPersonCircle } from "react-icons/bs";
+
 import { IoChevronForwardOutline } from "react-icons/io5";
+import { BsPersonCircle } from "react-icons/bs";
+import Input from './Input';
 
 
 const LoginForm = () => {
@@ -24,29 +26,27 @@ const LoginForm = () => {
 
     return (
         <LoginFormStyled onSubmit={handleSubmit}>
-      <h1>Bienvenue chez nous !</h1>
-      <hr />
-      <h2>Connectez-vous</h2>
-        <div className='input-with-icon'>
-        <BsPersonCircle className='icon' />
-          <input
-            type="text"
-            placeholder="Entrez votre prénom"
-            value={inputValue}
-            onChange={handleChange}
-            required
+      <div>
+        <h1>Bienvenue chez nous !</h1>
+        <hr />
+        <h2>Connectez-vous</h2>
+      </div>
+        <div>
+          <Input value={inputValue} onChange={handleChange} placeholder={"Entrez votre prénom"}
+          required
+          Icon={<BsPersonCircle className='icon'/>}
           />
+          
+          <button className='button-with-icon'>
+            <span type="submit">Accédez à mon espace</span></button>
+          <IoChevronForwardOutline className='icon' />
         </div>
-        <button className='button-with-icon'>
-          <span type="submit">Accédez à mon espace</span></button>
-        <IoChevronForwardOutline className='icon' />
       </LoginFormStyled>
     ); 
 };
 
 
 const LoginFormStyled = styled.form`
-  background-color: green;
   text-align: center;
   max-width: 500px;
   max-height: 400px;
@@ -64,6 +64,7 @@ const LoginFormStyled = styled.form`
     color: white;
     font-size: 48px;
   }
+  
   h2 {
     color: #8e8b8b;
     margin: 20px 10px 10px;
@@ -71,32 +72,7 @@ const LoginFormStyled = styled.form`
     font-size: 36px;
   }
 
-  .input-with-icon{
-    background-color: #fff;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    padding: 18px 24px;
-    margin: 18px 0;
-  }
 
-  .icon {
-    font-size: 15px;
-    margin-right: 8px;
-    color: #93a2b1;
-  }
-
-  input {
-    border: none;
-    font-size: 15px;
-    color: #17161a;
-    width: 100%;
-  }
-
-  &::placeholder {
-    background: white;
-    color: lightgrey;
-  }
 
   .button-with-icon {
     width: 100%;
@@ -137,7 +113,6 @@ const LoginFormStyled = styled.form`
     cursor: not-allowed;
   }
 
-
   .icon {
     display: flex;
     justify-content: center;
@@ -148,7 +123,5 @@ const LoginFormStyled = styled.form`
   }
 
 `;
-
-
 
 export default LoginForm;
