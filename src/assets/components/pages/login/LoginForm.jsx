@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import "../../../theme/index"
+import { IoChevronForwardOutline } from "react-icons/io5";
+import { BsPersonCircle } from "react-icons/bs";
+import TextInput from '../../reusable-ui/TextInput';
+import PrimaryButton from '../../reusable-ui/PrimaryButton';
+import { theme } from '../../../theme/index';
+
 
 const LoginForm = () => {
     const [inputValue, setInputValue] = useState("");
     const navigate = useNavigate()
    
-
-  const handleSubmit = (e) => {
+  const handleSubmit = (event) => {
     e.preventDefault();
       setInputValue("");
       navigate(`order/${inputValue}`)
@@ -15,21 +22,60 @@ const LoginForm = () => {
   const handleChange = (event) => { 
     setInputValue(event.target.value)
    }
+
     return (
-        <form onSubmit={handleSubmit}>
-      <h1>Bienvenue chez nous !</h1>
-      <br />
-      <h2>Connectez-vous</h2>
-        <input
-          type="text"
-          placeholder="Entrez votre prénom..."
-          value={inputValue}
-          onChange={handleChange}
+        <LoginFormStyled onSubmit={handleSubmit}>
+      <div>
+        <h1>Bienvenue chez nous !</h1>
+        <hr />
+        <h2>Connectez-vous</h2>
+      </div>
+        <div>
+          <TextInput value={inputValue} onChange={handleChange} placeholder={"Entrez votre prénom"}
           required
+          Icon={<BsPersonCircle className='icon'/>}
+          />
+          <PrimaryButton label={"Accéder à votre espace"} Icon={<IoChevronForwardOutline className="icon" />}
         />
-        <button type="submit">Accédez à votre espace</button>
-      </form>
-    );
+        </div>
+      </LoginFormStyled>
+    ); 
 };
+
+
+const LoginFormStyled = styled.form`
+  text-align: center;
+  max-width: 500px;
+  max-height: 400px;
+  margin: 0px auto;
+  padding: 2.5rem ${theme.spacing.lg};
+  border-radius: ${theme.borderRadius.round};
+  font-family: "Amatic SC", cursive;
+
+  hr {
+    border: 1.5px solid ${theme.colors.loginLine};
+    margin-bottom: 40px;
+    margin-top: 40px;
+  }
+
+  h1 {
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.P5};
+  }
+  
+  h2 {
+    margin: 20px 10px 10px;
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.P4};
+  }
+ // On met le style icon ici car il est trop spécifique au composant LoginForm (qui est le composant parent)
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: ${theme.fonts.P0};
+    margin-left: 10px;
+  }
+`;
 
 export default LoginForm;
