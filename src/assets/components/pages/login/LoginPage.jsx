@@ -2,10 +2,8 @@ import styled from "styled-components";
 import LoginForm from "./LoginForm";
 import Logo from "../../reusable-ui/Logo";
 
-
 const LoginPage = () => {
   
-
   return (
     <LoginPageStyled>
       <Logo/>
