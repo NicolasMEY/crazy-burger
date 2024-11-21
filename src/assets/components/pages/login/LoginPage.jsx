@@ -6,7 +6,8 @@ const LoginPage = () => {
   
   return (
     <LoginPageStyled>
-      <Logo/>
+      <Logo className={"logo-login-page"}
+      />
      <LoginForm/>
      </LoginPageStyled>
   );
@@ -36,6 +37,10 @@ background-blend-mode: darken;
   bottom: 0;
   z-index: -1;
 } */
+
+.logo-login-page {
+  transform: scale(2.2);
+}
 
 `;
 export default LoginPage;
