@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import Navbar from './Navbar';
+import Main from './Main';
 
 const OrderPage = () => {
     const {username} = useParams()
@@ -8,14 +10,8 @@ const OrderPage = () => {
     return (
         <OrderPageStyled>
             <div className='container'>
-                <div className='navbar'>
-                    Navbar
-                    <h1>Bonjour {username}</h1>
-                    <Link to="/"><button
-                    >Déconnexion</button>
-                    </Link>
-                </div>
-                <div className="main">Main</div>
+            <Navbar username={username}/>
+            <Main/>
             </div>
         </OrderPageStyled>
     );
@@ -37,19 +33,5 @@ const OrderPageStyled = styled.div`
     width: 1400px ;
     display: flex;
     flex-direction: column;
-
-    .navbar {
-    background-color: blueviolet;
-    height: 10vh;
-    
 }
-    .main {
-    background-color: green;
-    /* height: calc(95vh - 10VH); // on peut utiliser cette méthode sans display flex au niveau du container */
-    flex: 1;
-}
-}
-
-
-
 `;
