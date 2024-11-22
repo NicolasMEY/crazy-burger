@@ -13,7 +13,7 @@ const LoginForm = () => {
     const [inputValue, setInputValue] = useState("");
     const navigate = useNavigate()
    
-  const handleSubmit = (event) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
       setInputValue("");
       navigate(`order/${inputValue}`)
