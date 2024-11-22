@@ -38,7 +38,7 @@ const ProfileStyled = styled.div`
       margin: 0;
       color: ${theme.colors.greyBlue};
       b {
-        color: ${theme.colors.greyBlue};
+        color: ${theme.colors.primary_burger};
       }
     }
     a {
@@ -61,7 +61,6 @@ const ProfileStyled = styled.div`
   }
 
   .picture {
-    /* border: 1px solid red; */
     height: auto;
     display: flex;
     height: 100%;
