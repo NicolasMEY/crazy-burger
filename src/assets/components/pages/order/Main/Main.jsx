@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
+import Menu from "./Menu";
 
 function Main(props) {
     return (
         <MainStyled >
 <div className="basket">BASKET</div>
-<div className="menu">MENU</div>
+<Menu/>
+
 
 
 
@@ -31,9 +33,7 @@ const MainStyled = styled.div`
     .basket {
 background-color: purple;
     }
-    .menu {
-background-color: pink;
-    }
+    
 
 
 `;
