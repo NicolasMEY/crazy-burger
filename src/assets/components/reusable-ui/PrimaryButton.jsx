@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function PrimaryButton({label, Icon}) {
+export default function PrimaryButton({label, Icon, className}) {
   return (
-    <PrimaryButtonStyled >
+    <PrimaryButtonStyled className={className} >
             <span>{label}</span>
             {Icon && Icon }
             </PrimaryButtonStyled>
@@ -11,7 +11,6 @@ export default function PrimaryButton({label, Icon}) {
 }
 
 const PrimaryButtonStyled = styled.button`
-     
     width: 100%;
     border: 1px solid red;
     display: inline-flex;
@@ -49,7 +48,4 @@ const PrimaryButtonStyled = styled.button`
     opacity: 0.6;
     cursor: not-allowed;
   }
-
- 
-  
 `;
