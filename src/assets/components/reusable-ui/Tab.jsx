@@ -45,6 +45,6 @@ display: flex;
  }
 
  .label{
-  
+  padding-left: 13px;
  }
 `;
