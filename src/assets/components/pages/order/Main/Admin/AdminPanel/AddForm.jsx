@@ -1,20 +1,34 @@
 import styled from "styled-components";
+import OrderContext from "../../../../../../context/OrderContext";
+import { useContext } from "react";
 
 export default function AddForm() {
-  return <AddFormStyled>
-    <div className="image-preview">ImagePreview</div>
+  const {handleAdd} = useContext(OrderContext)
 
+  const newProduct = {
+    id : new Date().getTime(),
+    title : 'Nouveau produit',
+    imageSource: "https://www.gsrmagazine.com/sites/default/files/styles/story_page/pul",
+    price: 2.5,
+  }
+
+
+ const handleSubmit = (event) =>  { 
+  event.preventDefault()
+  handleAdd(newProduct)
+ }
+
+  return (
+  <AddFormStyled onSubmit={handleSubmit}>
+    <div className="image-preview">ImagePreview</div>
     < div className= "input-fields">
       <input type="text" placeholder="Nom" />
-    
       <input type="text" placeholder="Image URL" />
-    
       <input type="text" placeholder="Prix" />
     </div> 
-
     <button className="submit-button">Submit button</button>
-    
-    </AddFormStyled>;
+    </AddFormStyled>
+  )
 }
 
 const AddFormStyled = styled.form`
