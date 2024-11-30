@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {theme} from "../../../../../../theme" ;
 import OrderContext from "../../../../../../context/OrderContext";
 import { useContext, useState } from "react";
 import { FiCheck } from "react-icons/fi";
@@ -25,15 +26,12 @@ const handleSubmit = (event) => {
   handleAdd(newProductToAdd)
   setNewProduct(EMPTY_PRODUCT)
   displaySuccesMessage()
-
-  
 }
 
 const handleChange = (event) => {
   const {name, value} = event.target
   setNewProduct({...newProduct, [name]: value }) 
 }
-
 
 const displaySuccesMessage = () => {setIsSubmitted(true)
   setTimeout(() => {
@@ -46,9 +44,8 @@ const displaySuccesMessage = () => {setIsSubmitted(true)
     <div  className="image-preview">
       {newProduct.imageSource ? (
       <img src={newProduct.imageSource} alt={newProduct.title} /> ) : (
-      <div >Aucune image</div>)}
+      <div className="empty-image" >Aucune image</div>)}
     </div>
-
 
     < div className= "input-fields">
       <input name = "title"  value={newProduct.title} type="text" placeholder="Nom du produit (ex: Super Burger" onChange={handleChange} />
@@ -70,12 +67,13 @@ const displaySuccesMessage = () => {setIsSubmitted(true)
 }
 
 const AddFormStyled = styled.form`
-  border: 5px, solid, black;
   display: grid;
   grid-template-columns: 1fr, 3fr;
   grid-template-rows: repeat(4, 1fr);
   height: 100%;
   width: 70%;
+  grid-column-gap: 20px;
+  grid-row-gap: 8px;
 
   .image-preview {
     // Grid-area : coin  supérieur gauche puis coin inférieur droit et on commence toujours par la ligne
@@ -90,7 +88,20 @@ const AddFormStyled = styled.form`
       object-fit: contain;
       object-position: center;
     }
-  }
+
+    .empty-image {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid ${theme.colors.greyLight};
+      line-height: 1.5;
+      color: ${theme.colors.greyLight};
+      border-radius: ${theme.borderRadius.round};
+      }
+    }
+  
   .input-fields {
     background-color: purple;
     grid-area: 1 / 2 / 4 / 3 ;
