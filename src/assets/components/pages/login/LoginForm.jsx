@@ -33,9 +33,10 @@ const LoginForm = () => {
         <div>
           <TextInput value={inputValue} onChange={handleChange} placeholder={"Entrez votre prénom"}
           required
-          Icon={<BsPersonCircle className='icon'/>}
+          Icon={<BsPersonCircle/>}
           />
-          <PrimaryButton label={"Accéder à votre espace"} Icon={<IoChevronForwardOutline className="icon" />}
+          <PrimaryButton label={"Accéder à votre espace"} Icon={<IoChevronForwardOutline />}
+          className="input-login"
         />
         </div>
       </LoginFormStyled>
@@ -68,14 +69,9 @@ const LoginFormStyled = styled.form`
     color: ${theme.colors.white};
     font-size: ${theme.fonts.P4};
   }
- // On met le style icon ici car il est trop spécifique au composant LoginForm (qui est le composant parent)
-  .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: ${theme.fonts.SM};
-    margin-left: 10px;
-  }
+ .input-login {
+  margin: 18px 0; // Must be handle in Parent
+ }
 `;
 
 export default LoginForm;
