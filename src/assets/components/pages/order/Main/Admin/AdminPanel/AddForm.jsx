@@ -7,6 +7,7 @@ import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
 import TextInput from "../../../../../reusable-ui/TextInput"
+import Button from "../../../../../reusable-ui/Button";
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -16,8 +17,7 @@ const EMPTY_PRODUCT = {
 }
 
 export default function AddForm() {
-  const {handleAdd} = useContext(OrderContext)
-
+const {handleAdd} = useContext(OrderContext)
 const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 const [isSubmitted,setIsSubmitted] = useState(false)
 
@@ -57,22 +57,35 @@ const displaySuccesMessage = () => {setIsSubmitted(true)
       name = "title"  
       value={newProduct.title} 
       type="text" 
-      placeholder="Nom du produit (ex: Super Burger" onChange={handleChange}
+      placeholder="Nom du produit (ex: Super Burger" 
+      onChange={handleChange}
       Icon={<FaHamburger/>}
       version="minimalist" />
 
-      <TextInput name = "imageSource"  value={newProduct.imageSource} type="text" placeholder="Image URL d'une image (ex : https://la-photo-de-mon-produit.png" onChange={handleChange}
+      <TextInput 
+      name = "imageSource"  
+      value={newProduct.imageSource} 
+      type="text" 
+      placeholder="Image URL d'une image (ex : https://la-photo-de-mon-produit.png" 
+      onChange={handleChange}
       Icon={<BsFillCameraFill/>}
       version="minimalist" />
 
-      <TextInput name = "price"  value={newProduct.price ? newProduct.price : ""} type="text" placeholder="Prix" onChange={handleChange}
+      <TextInput 
+      name = "price"  
+      value={newProduct.price ? newProduct.price : ""} 
+      type="text" 
+      placeholder="Prix" 
+      onChange={handleChange}
       Icon={<MdOutlineEuro/>}
-      version="minimalist" />
-
+      version="minimalist" 
+      />
     </div> 
 
     <div className="submit">
-      <button className="submit-button" >Submit button</button>
+      <Button 
+      className="submit-button" label={"Ajouter un nouveau produit au menu"} version="success"
+      />
     {isSubmitted && (
      <div className="submit-message">
       <FiCheck/>
@@ -122,7 +135,6 @@ const AddFormStyled = styled.form`
   
   .input-fields {
     grid-area: 1 / 2 / 4 / 3 ;
-
     display: grid;
     grid-row-gap: 8px;
     /* grid-template-columns: 1fr;
@@ -132,16 +144,12 @@ const AddFormStyled = styled.form`
     grid-area: 4 / 2 / 5 / 3 ;
     display: flex;
     align-items: center;
+    position: relative;
+    top: 3px;
 
     .submit-button {
-      width: 50%;
-    }
-
-    .submit-message {
-     
+      /* width: 50%; */
+      height: 100%;
     }
   }
-
- 
-
 `;
