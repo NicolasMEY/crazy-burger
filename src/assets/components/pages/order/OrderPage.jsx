@@ -6,24 +6,26 @@ import Main from './Main/Main';
 import OrderContext from "../../../context/OrderContext.jsx"
 import {fakeMenu } from "../../../fakeData/fakeMenu"
 
-
 const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(true);
     const [isCollapsed, setIsCollapsed] = useState(false)
     const [currentTabSelected, setcurrentTabSelected] = useState("add")
     const [menu, setMenu] = useState(fakeMenu.MEDIUM)
 
-      const handleAdd = (newProduct) => {
-        const menuCopy = [...menu];
-        const menuUpdated = [newProduct, ...menuCopy];
-        setMenu(menuUpdated);
-    };
+    const handleAdd = (newProduct) => {
+            const menuCopy = [...menu];
+            const menuUpdated = [newProduct, ...menuCopy];
+            setMenu(menuUpdated);
+        };
 
-const handleDelete = (idOfProductToDelete) => { 
-        const menuCopy = [...menu]
-        const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
-        setMenu(menuUpdated)
-     }
+    const handleDelete = (idOfProductToDelete) => { 
+            const menuCopy = [...menu]
+            const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
+            setMenu(menuUpdated)
+        }
+
+    const resetMenu = () => { setMenu(fakeMenu.MEDIUM) }
+
 
 const orderContextValue={
     isModeAdmin,
@@ -34,6 +36,7 @@ const orderContextValue={
     menu,
     handleAdd,
     handleDelete,
+    resetMenu,
     }
 
     return (
