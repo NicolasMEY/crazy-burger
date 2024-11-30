@@ -30,7 +30,14 @@ const handleChange = (event) => {
 
   return (
   <AddFormStyled onSubmit={handleSubmit}>
-    <div className="image-preview">Aucune image</div>
+
+    <div  className="image-preview">
+      {newProduct.imageSource ? (
+      <img src={newProduct.imageSource} alt={newProduct.title} /> ) : (
+      <div >Aucune image</div>)}
+    </div>
+
+
     < div className= "input-fields">
       <input name = "title"  value={newProduct.title} type="text" placeholder="Nom" onChange={handleChange} />
       <input name = "imageSource"  value={newProduct.imageSource} type="text" placeholder="Image URL" onChange={handleChange} />
@@ -50,9 +57,18 @@ const AddFormStyled = styled.form`
   width: 70%;
 
   .image-preview {
-    background-color: blue;
     // Grid-area : coin  supérieur gauche puis coin inférieur droit et on commence toujours par la ligne
     grid-area: 1 / 1 / 4 / 2 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
   }
   .input-fields {
     background-color: purple;
@@ -67,5 +83,7 @@ const AddFormStyled = styled.form`
     grid-area: 4 / 2 / 5 / 3 ;
     width: 50%;
   }
+
+ 
 
 `;
