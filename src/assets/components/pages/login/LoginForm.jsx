@@ -37,6 +37,7 @@ const LoginForm = () => {
           />
           <PrimaryButton label={"Accéder à votre espace"} Icon={<IoChevronForwardOutline />}
           className="input-login"
+          version="normal"
         />
         </div>
       </LoginFormStyled>

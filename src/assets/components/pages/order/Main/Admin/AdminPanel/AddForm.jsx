@@ -3,6 +3,10 @@ import {theme} from "../../../../../../theme" ;
 import OrderContext from "../../../../../../context/OrderContext";
 import { useContext, useState } from "react";
 import { FiCheck } from "react-icons/fi";
+import { FaHamburger } from "react-icons/fa";
+import { BsFillCameraFill } from "react-icons/bs";
+import { MdOutlineEuro } from "react-icons/md";
+import TextInput from "../../../../../reusable-ui/TextInput"
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -48,9 +52,23 @@ const displaySuccesMessage = () => {setIsSubmitted(true)
     </div>
 
     < div className= "input-fields">
-      <input name = "title"  value={newProduct.title} type="text" placeholder="Nom du produit (ex: Super Burger" onChange={handleChange} />
-      <input name = "imageSource"  value={newProduct.imageSource} type="text" placeholder="Image URL d'une image (ex : https://la-photo-de-mon-produit.png" onChange={handleChange} />
-      <input name = "price"  value={newProduct.price ? newProduct.price : ""} type="text" placeholder="Prix" onChange={handleChange} />
+
+      <TextInput 
+      name = "title"  
+      value={newProduct.title} 
+      type="text" 
+      placeholder="Nom du produit (ex: Super Burger" onChange={handleChange}
+      Icon={<FaHamburger/>}
+      version="minimalist" />
+
+      <TextInput name = "imageSource"  value={newProduct.imageSource} type="text" placeholder="Image URL d'une image (ex : https://la-photo-de-mon-produit.png" onChange={handleChange}
+      Icon={<BsFillCameraFill/>}
+      version="minimalist" />
+
+      <TextInput name = "price"  value={newProduct.price ? newProduct.price : ""} type="text" placeholder="Prix" onChange={handleChange}
+      Icon={<MdOutlineEuro/>}
+      version="minimalist" />
+
     </div> 
 
     <div className="submit">
@@ -103,15 +121,14 @@ const AddFormStyled = styled.form`
     }
   
   .input-fields {
-    background-color: purple;
     grid-area: 1 / 2 / 4 / 3 ;
 
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows:repeat(3, 1fr) ;
+    grid-row-gap: 8px;
+    /* grid-template-columns: 1fr;
+    grid-template-rows:repeat(3, 1fr) ; */
   }
   .submit {
-    background-color: green;
     grid-area: 4 / 2 / 5 / 3 ;
     display: flex;
     align-items: center;
