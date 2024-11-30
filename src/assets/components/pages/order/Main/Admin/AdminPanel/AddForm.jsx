@@ -21,6 +21,7 @@ const handleSubmit = (event) => {
     id: crypto.randomUUID
   }
   handleAdd(newProductToAdd)
+  setNewProduct(EMPTY_PRODUCT)
 }
 
 const handleChange = (event) => {
@@ -39,8 +40,8 @@ const handleChange = (event) => {
 
 
     < div className= "input-fields">
-      <input name = "title"  value={newProduct.title} type="text" placeholder="Nom" onChange={handleChange} />
-      <input name = "imageSource"  value={newProduct.imageSource} type="text" placeholder="Image URL" onChange={handleChange} />
+      <input name = "title"  value={newProduct.title} type="text" placeholder="Nom du produit (ex: Super Burger" onChange={handleChange} />
+      <input name = "imageSource"  value={newProduct.imageSource} type="text" placeholder="Image URL d'une image (ex : https://la-photo-de-mon-produit.png" onChange={handleChange} />
       <input name = "price"  value={newProduct.price ? newProduct.price : ""} type="text" placeholder="Prix" onChange={handleChange} />
     </div> 
     <button className="submit-button">Submit button</button>
