@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
-
 import { theme } from "../../../../theme";
 import { formatPrice } from "../../../../../utils/maths";
 import Card from "../../../reusable-ui/Card";
 import OrderContext from "../../../../context/OrderContext";
+
+const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
 
@@ -14,7 +15,10 @@ const {menu} = useContext(OrderContext)
     <MenuStyled className="menu" >
       {menu.map(({id, title, imageSource, price} ) => {
         return (
-        <Card key={id} title={title} imageSource={imageSource} leftDescription={formatPrice(price)}/>)
+        <Card 
+        key={id} 
+        title={title} 
+        imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT } leftDescription={formatPrice(price)}/>)
       } )
     }
     </MenuStyled>

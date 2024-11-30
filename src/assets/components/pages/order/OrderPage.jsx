@@ -10,8 +10,6 @@ import {fakeMenu } from "../../../fakeData/fakeMenu"
 const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(true);
     const [isCollapsed, setIsCollapsed] = useState(false)
-    const [isAddSelected, setIsAddSelected] = useState(true)
-    const [isEditSelected, setIsEditSelected] = useState(false)
     const [currentTabSelected, setcurrentTabSelected] = useState("add")
     const [menu, setMenu] = useState(fakeMenu.MEDIUM)
 
@@ -27,10 +25,6 @@ const orderContextValue={
     setIsModeAdmin,
     isCollapsed,
     setIsCollapsed,
-    isAddSelected,
-    setIsAddSelected,
-    isEditSelected,
-    setIsEditSelected,
     currentTabSelected, setcurrentTabSelected,
     menu,
     handleAdd,
