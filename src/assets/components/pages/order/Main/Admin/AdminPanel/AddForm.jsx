@@ -1,14 +1,11 @@
 import styled from "styled-components";
-import {theme} from "../../../../../../theme" ;
 import OrderContext from "../../../../../../context/OrderContext";
 import { useContext, useState } from "react";
-import { FiCheck } from "react-icons/fi";
-import { FaHamburger, FaThemeisle } from "react-icons/fa";
-import { BsFillCameraFill } from "react-icons/bs";
-import { MdOutlineEuro } from "react-icons/md";
 import TextInput from "../../../../../reusable-ui/TextInput"
 import Button from "../../../../../reusable-ui/Button";
 import ImagePreview from "./ImagePreview";
+import SubmitMessage from "./SubmitMessage";
+import { getInputTextsConfig } from "./inputTextConfig";
 
 export const EMPTY_PRODUCT = {
   id: "",
@@ -19,9 +16,9 @@ export const EMPTY_PRODUCT = {
 
 export default function AddForm() {
 const {handleAdd, newProduct, setNewProduct} = useContext(OrderContext)
-// const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 const [isSubmitted,setIsSubmitted] = useState(false)
 
+// comportements
 const handleSubmit = (event) => {
   event.preventDefault()
   const newProductToAdd = {
@@ -43,52 +40,23 @@ const displaySuccesMessage = () => {setIsSubmitted(true)
     setIsSubmitted(false)
   }, 2000);}
 
+const inputTexts = getInputTextsConfig(newProduct)
+
   return (
   <AddFormStyled onSubmit={handleSubmit}>
-
 <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title}/>
 
     < div className= "input-fields">
-
-      <TextInput 
-      name = "title"  
-      value={newProduct.title} 
-      type="text" 
-      placeholder="Nom du produit (ex: Super Burger" 
-      onChange={handleChange}
-      Icon={<FaHamburger/>}
-      version="minimalist" />
-
-      <TextInput 
-      name = "imageSource"  
-      value={newProduct.imageSource} 
-      type="text" 
-      placeholder="Image URL d'une image (ex : https://la-photo-de-mon-produit.png" 
-      onChange={handleChange}
-      Icon={<BsFillCameraFill/>}
-      version="minimalist" />
-
-      <TextInput 
-      name = "price"  
-      value={newProduct.price ? newProduct.price : ""} 
-      type="text" 
-      placeholder="Prix" 
-      onChange={handleChange}
-      Icon={<MdOutlineEuro/>}
-      version="minimalist" 
-      />
-    </div> 
-
+    {inputTexts.map((input) => (<TextInput {...input} onChange={handleChange} version="minimalist"
+    />))}
+    </div>
     <div className="submit">
       <Button 
       className="submit-button" 
       label={"Ajouter un nouveau produit au menu"} version="success"
       />
     {isSubmitted && (
-     <div className="submit-message">
-      <FiCheck className="icon"/>
-    <span className="message">Ajouté avec succès !</span>
-    </div>
+    <SubmitMessage/>
     )}
     </div>
     </AddFormStyled>
@@ -123,27 +91,6 @@ const AddFormStyled = styled.form`
     .submit-button {
       /* width: 50%;  */
       height: 100%;
-    }
-
-    .submit-message {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-left: 5px;
-    }
-    .icon {
-      color: ${theme.colors.success};
-      margin-left: 10px;
-      width: 1em;
-      height: 1em;
-      border: 1px solid ${theme.colors.success};
-      border-radius: 50%;
-      vertical-align: middle;
-    }
-    .message {
-      margin-left: 5px;
-      font-size: ${theme.fonts.SM};
-      color: ${theme.colors.success};
     }
   }
 `;
