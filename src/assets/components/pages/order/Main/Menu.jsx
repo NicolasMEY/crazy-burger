@@ -9,7 +9,7 @@ const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
 
-const {menu} = useContext(OrderContext)
+const {menu, isModeAdmin} = useContext(OrderContext)
 
   return (
     <MenuStyled className="menu" >
@@ -18,7 +18,9 @@ const {menu} = useContext(OrderContext)
         <Card 
         key={id} 
         title={title} 
-        imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT } leftDescription={formatPrice(price)}/>)
+        imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT } leftDescription={formatPrice(price)}
+        hasDeleteButton={isModeAdmin}
+        />)
       } )
     }
     </MenuStyled>
