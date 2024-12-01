@@ -9,7 +9,7 @@ import { EMPTY_PRODUCT } from './Main/Admin/AdminPanel/AddForm.jsx';
 
 const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(true);
-    const [isCollapsed, setIsCollapsed] = useState(false)
+    const [isCollapsed, setIsCollapsed] = useState(true)
     const [currentTabSelected, setcurrentTabSelected] = useState("add")
     const [menu, setMenu] = useState(fakeMenu.MEDIUM)
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
