@@ -1,3 +1,4 @@
+import "./App.css"
 import { Routes,  Route } from "react-router-dom"
 import OrderPage from "./assets/components/pages/order/OrderPage"
 import LoginPage from "./assets/components/pages/login/LoginPage"

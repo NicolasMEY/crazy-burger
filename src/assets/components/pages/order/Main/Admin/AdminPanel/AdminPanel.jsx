@@ -17,12 +17,13 @@ const tabSelected =  getTabSelected  (tabs, currentTabSelected)
   )
 }
 const AdminPanelStyled = styled.div`
-    height: 250px;
+    height: 180px;
     border-bottom-left-radius: ${theme.borderRadius.extraRound};
     border-bottom-right-radius: ${theme.borderRadius.extraRound};
     background-color: ${theme.colors.white};
     border-top: 1px, solid, ${theme.colors.greyLight};
     box-shadow: ${theme.shadows.subtle};
-    padding: 30px 5%;
+    padding: 30px 5%;// ajouter au panel et non dans les form car sinon on va devoir le mettre dans les deux form : AddForm et EditForm
+  // les 5% c'est pour les aligner avec le tab.
 
 `;

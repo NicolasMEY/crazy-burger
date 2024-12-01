@@ -19,15 +19,15 @@ const ImagePreviewStyled = styled.div`
     align-items: center;
 
     img {
-      width: 100%;
-      height: 100%;
+      width: 100px; // essayer avec 100%
+      height: 100px; // essayer avec 100%
       object-fit: contain;
       object-position: center;
     }
-
+ 
     .empty-image {
-      height: 100%;
-      width: 100%;
+      height: 100%; 
+      width: 100%; 
       display: flex;
       justify-content: center;
       align-items: center;

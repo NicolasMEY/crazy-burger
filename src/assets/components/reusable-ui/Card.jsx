@@ -6,14 +6,15 @@ import {TiDelete}  from "react-icons/ti"
 export default function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete}) {
   return (
     <CardStyled className="produit">
-
       {hasDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}><TiDelete className="icon"/></button>}
 
-          <div className="image"><img src={imageSource} alt={title} /></div>
+          <div className="image">
+            <img src={imageSource} alt={title} />
+            </div>
           <div className="text-info">
-            <div className="title">{title}</div>
+            <div className="title">{title}
+            </div>
             <div className="description">
-            {/* <div className="left-description">{leftDescription}</div> */}
               <div className="left-description">{leftDescription}</div>
             <div className="right-description">
               <Button className="primary-button" label={"Ajouter"}/>
@@ -63,15 +64,12 @@ const CardStyled = styled.div`
     color: ${theme.colors.primary};
   }
 }
-
-  
-
-
   .image {
     width: 100%;
     height: auto ;
     margin-top: 30px;
     margin-bottom: 20px;
+    
     img {
       width: 100%;
       height: 100%;

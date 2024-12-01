@@ -45,9 +45,8 @@ const inputTexts = getInputTextsConfig(newProduct)
   return (
   <AddFormStyled onSubmit={handleSubmit}>
 <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title}/>
-
     < div className= "input-fields">
-    {inputTexts.map((input) => (<TextInput {...input} onChange={handleChange} version="minimalist"
+    {inputTexts.map((input) => (<TextInput key={(input.id)} {...input} onChange={handleChange} version="minimalist"
     />))}
     </div>
     <div className="submit">
@@ -65,15 +64,12 @@ const inputTexts = getInputTextsConfig(newProduct)
 
 const AddFormStyled = styled.form`
   display: grid;
-  grid-template-columns: 1fr, 3fr;
+  grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(4, 1fr);
   height: 100%;
   width: 70%;
-  grid-column-gap: 20px;
-  grid-row-gap: 8px;
+  gap: 8px 20px;
 
-  
-  
   .input-fields {
     grid-area: 1 / 2 / 4 / 3 ;
     display: grid;

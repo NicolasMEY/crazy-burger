@@ -2,13 +2,12 @@ import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 
 
-export default function TextInput({value,
+export default function TextInput({
     onChange, Icon, className, version = "normal", ...extraProps}) {
   return (
     <TextInputStyled className={className} version={version} >
          <div className="icon">{Icon && Icon}</div>
             <input
-              value={value}
               onChange={onChange}
               type="text"
               {...extraProps}
@@ -20,12 +19,12 @@ const TextInputStyled = styled.div`
     border-radius: ${theme.borderRadius.round};
     display: flex;
     align-items: center;
-    /* padding: 18px 24px; */
+    /* padding: 18px 24px;  */
   
   .icon {
     display: flex;
     font-size: ${theme.fonts.SM};
-    margin: 0 8px 0 10px ;
+    margin: 0 13px 0 8px ;
     /* justify-content: center;
     align-items: center;
     color: ${theme.colors.greySemiDark}; */
@@ -34,11 +33,9 @@ const TextInputStyled = styled.div`
   input {
     border: none;
     font-size: ${theme.fonts.SM};
-    /* color: ${theme.colors.dark}; */
     width: 100%;
   
   &::placeholder {
-    /* background: ${theme.colors.white}; */
     color: ${theme.colors.greyMedium};
   }
 }

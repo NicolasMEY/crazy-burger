@@ -20,7 +20,8 @@ const LoginPageStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/burger-background.jpg');
+  
+  background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/burger-background.jpg');
   background-size: cover; 
   background-position: center;  
 
@@ -39,7 +40,7 @@ background-blend-mode: darken;
 } */
 
 .logo-login-page {
-  transform: scale(2.2);
+  transform: scale(2.5);
 }
 
 `;

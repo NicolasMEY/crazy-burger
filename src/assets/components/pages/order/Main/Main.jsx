@@ -11,7 +11,7 @@ const {isModeAdmin, setIsModeAdmin} = useContext(OrderContext)
 
     return (
         <MainStyled >
-            {/* <div className="basket">BASKET</div> */}
+            {/* <Basket /> */}
             <div className="menu-and-admin">
                 <Menu/>
                 {isModeAdmin && <Admin/>  }

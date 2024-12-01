@@ -3,20 +3,22 @@ import { theme } from "../../theme";
 
 export default function Button({label, Icon, className, version= "normal", onClick}) {
   return (
-    <ButtonStyled className={className} version={version} onClick={onClick} >
-            <span>{label}</span>
-            <div className="icon">{Icon && Icon }</div>
-            </ButtonStyled>
+    <ButtonStyled
+    className={className} 
+    version={version} 
+    onClick={onClick} >
+    <span>{label}</span>
+    <div className="icon">{Icon && Icon }</div>
+    </ButtonStyled>
   )
 }
 
 const ButtonStyled = styled.button`
 
-${({version}) => extraStyle[version] } 
+${({version}) => extraStyle[version]}; 
 `
-
 const extraStylePrimary = css`
-width: 100%;
+    width: 100%;
     border: 1px solid red;
     display: inline-flex;
     justify-content: center;
@@ -84,16 +86,14 @@ const extraStyleSuccess = css`
   height: 35px;
   padding: 0 1.5em;
   font-weight: ${theme.weights.semiBold};
-
-
   :hover {
-    background-color: ${theme.colors.white};
+    background: ${theme.colors.white};
     color: ${theme.colors.success};
     border: 1px solid ${theme.colors.success};
   }
   :active {
     color: ${theme.colors.white};
-    background-color: ${theme.colors.success};
+    background: ${theme.colors.success};
     border: 1px solid ${theme.colors.success};
   }
 `
