@@ -1,47 +1,87 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 
 
-export default function TextInput({value,
-    onChange, Icon, ...extraProps}) {
+export default function TextInput({
+    onChange, Icon, className, version = "normal", ...extraProps}) {
   return (
-    <InputStyled >
-         {Icon && Icon}
+    <TextInputStyled className={className} version={version} >
+         <div className="icon">{Icon && Icon}</div>
             <input
-              value={value}
               onChange={onChange}
               type="text"
               {...extraProps}
             />
-          </InputStyled>
+          </TextInputStyled>
   )
 }
-const InputStyled = styled.div`
-  
-    background-color: #fff;
+const TextInputStyled = styled.div`
     border-radius: ${theme.borderRadius.round};
     display: flex;
     align-items: center;
-    padding: 18px 24px;
-    margin: 18px 0;
+    /* padding: 18px 24px;  */
   
   .icon {
+    display: flex;
     font-size: ${theme.fonts.SM};
-    margin-right: 8px;
-    color: ${theme.colors.greySemiDark};
+    margin: 0 13px 0 8px ;
+    /* justify-content: center;
+    align-items: center;
+    color: ${theme.colors.greySemiDark}; */
   }
 
   input {
     border: none;
     font-size: ${theme.fonts.SM};
-    color: ${theme.colors.dark};
     width: 100%;
   
   &::placeholder {
-    background: ${theme.colors.white};
     color: ${theme.colors.greyMedium};
   }
 }
 
-`;
+/* ${(props) => {
+if (props.version === "normal") return  extraNormalStyle
+if (props.version === "minimalist") return extraMinimalisteStyle 
+}}  */
+
+/// version dictionnaire destructurée ⤵️
+${({version}) => extraStyle[version]}
+`
+
+const extraNormalStyle = css`
+background:  ${theme.colors.white};
+padding: 18px 28px;
+color: ${theme.colors.greySemiDark};
+
+input {
+  color: ${theme.colors.dark};
+
+
+&::placeholder{
+  background-color: ${theme.colors.white};
+}
+}
+`
+
+const extraMinimalisteStyle = css`
+background:  ${theme.colors.background_white};
+padding: 8px 16px;
+color: ${theme.colors.greyBlue};
+
+input {
+  background-color: ${theme.colors.background_white};
+  color: ${theme.colors.dark};
+
+
+&:focus {
+  outline: 0;
+}
+}
+`
+
+const extraStyle = {
+  normal: extraNormalStyle,
+  minimalist: extraMinimalisteStyle,
+}
 
