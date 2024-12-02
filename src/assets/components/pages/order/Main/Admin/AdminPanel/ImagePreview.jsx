@@ -5,7 +5,7 @@ export default function ImagePreview({imageSource, title}) {
   return (
     <ImagePreviewStyled >
       {imageSource ? (
-      <img src={newProduct.imageSource} alt={title} /> ) : (
+      <img src={imageSource} alt={title} /> ) : (
       <div className="empty-image" >Aucune image</div>)}
     </ImagePreviewStyled>
   )
