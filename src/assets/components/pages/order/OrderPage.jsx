@@ -16,7 +16,7 @@ const OrderPage = () => {
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
     const [productSelected, setproductSelected] = useState(EMPTY_PRODUCT)
 
-    const handleAdd = (newProduct) => {
+const handleAdd = (newProduct) => {
             const menuCopy = [...menu];
             const menuUpdated = [newProduct, ...menuCopy];
             setMenu(menuUpdated);
@@ -24,15 +24,24 @@ const OrderPage = () => {
 
     const handleDelete = (idOfProductToDelete) => { 
         //1. copy du state
-            const menuCopy = [...menu]
+            const menuCopy = JSON.parse(JSON.stringify(menu))
         //2. manip de la copie du state
             const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
         //3. update du state
             setMenu(menuUpdated)
         }
 
-    const resetMenu = () => { setMenu(fakeMenu.MEDIUM) }
+const handleEdit = (productBeingEdited) =>
+// Copy du state en mode deep clone, alternative plus puissante au destructuring qui reste superficiel [...menu]
+{ const menuCopy = JSON.parse(JSON.stringify(menu))
+    //2. Manip de la copie du state
+const indexOfProductToEdit = menu.findIndex((menuProduct) => menuProduct.id === productBeingEdited.id )
+menuCopy [indexOfProductToEdit] = productBeingEdited
+// 3. Update du state
+setMenu(menuCopy)
+ }
 
+    const resetMenu = () => { setMenu(fakeMenu.MEDIUM) }
 
 const orderContextValue={
     isModeAdmin,
@@ -48,7 +57,8 @@ const orderContextValue={
     newProduct,
     setNewProduct,
     productSelected, 
-    setproductSelected
+    setproductSelected,
+    handleEdit
     }
 
     return (
