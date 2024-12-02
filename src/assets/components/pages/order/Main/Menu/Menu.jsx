@@ -10,7 +10,7 @@ import EmptyMenuClient from "./EmptyMenuClient";
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
-const {menu, isModeAdmin, handleDelete, resetMenu} = useContext(OrderContext)
+const {menu, isModeAdmin, handleDelete, resetMenu, setproductSelected} = useContext(OrderContext)
 
 // Affichage
 if (menu.length === 0) {
@@ -20,6 +20,11 @@ if (menu.length === 0) {
     <EmptyMenuAdmin onReset={resetMenu}/>)
   }
   
+const handleClick = (idProductClicked) => {
+  const productSelected = menu.find((product) => product.id === idProductClicked)
+  setproductSelected(productSelected)
+}
+
   return (
     <MenuStyled className="menu" >
       {menu.map(({id, title, imageSource, price} ) => {
@@ -30,6 +35,7 @@ if (menu.length === 0) {
         imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT } leftDescription={formatPrice(price)}
         hasDeleteButton={isModeAdmin}
         onDelete={() => handleDelete(id)}
+        onClick={() => handleClick(id)}
         />)
       } )
     }

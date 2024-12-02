@@ -5,7 +5,8 @@ import Navbar from './Navbar/Navbar';
 import Main from './Main/Main';
 import OrderContext from "../../../context/OrderContext.jsx"
 import {fakeMenu } from "../../../fakeData/fakeMenu"
-import { EMPTY_PRODUCT } from './Main/Admin/AdminPanel/AddForm.jsx';
+import { EMPTY_PRODUCT } from '../../../enums/product.jsx';
+
 
 const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(true);
@@ -13,6 +14,7 @@ const OrderPage = () => {
     const [currentTabSelected, setcurrentTabSelected] = useState("edit")
     const [menu, setMenu] = useState(fakeMenu.MEDIUM)
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+    const [productSelected, setproductSelected] = useState(EMPTY_PRODUCT)
 
     const handleAdd = (newProduct) => {
             const menuCopy = [...menu];
@@ -44,7 +46,9 @@ const orderContextValue={
     handleDelete,
     resetMenu,
     newProduct,
-    setNewProduct
+    setNewProduct,
+    productSelected, 
+    setproductSelected
     }
 
     return (
