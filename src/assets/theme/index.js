@@ -63,6 +63,10 @@ const weights = {
   heavy: 800,
 };
 
+const family = {
+  stylish: `"Amatic SC", cursive`,
+};
+
 export const theme = {
   colors,
   fonts,
@@ -70,6 +74,7 @@ export const theme = {
   borderRadius,
   shadows,
   weights,
+  family,
   spacing,
 };
 
