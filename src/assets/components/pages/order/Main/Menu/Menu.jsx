@@ -38,6 +38,7 @@ if (menu.length === 0) {
         hasDeleteButton={isModeAdmin}
         onDelete={() => handleDelete(id)}
         onClick={() => handleClick(id)}
+        isHoverable={isModeAdmin}
         />)
       } )
     }
