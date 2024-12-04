@@ -6,11 +6,12 @@ import Card from "../../../../reusable-ui/Card";
 import OrderContext from "../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { checkIfProductIsClicked } from "./helper";
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
-const {menu, isModeAdmin, handleDelete, resetMenu, setproductSelected} = useContext(OrderContext)
+const {menu, isModeAdmin, handleDelete, resetMenu, productSelected, setproductSelected} = useContext(OrderContext)
 
 // Comportement
 const handleClick = (idProductClicked) => {
@@ -39,7 +40,7 @@ if (menu.length === 0) {
         onDelete={() => handleDelete(id)}
         onClick={() => handleClick(id)}
         isHoverable={isModeAdmin}
-        isSelected= {false}
+        isSelected= {checkIfProductIsClicked(id, productSelected.id)}
         />)
       } )
     }
