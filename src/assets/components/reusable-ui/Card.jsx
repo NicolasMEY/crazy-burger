@@ -31,6 +31,7 @@ export default function Card({title, imageSource, leftDescription, hasDeleteButt
 const CardStyled = styled.div`
 ${(props) => props.isHoverable && hoverableStyle }
 border-radius: ${theme.borderRadius.extraRound};
+height: 330px;
 
 
   .card {
