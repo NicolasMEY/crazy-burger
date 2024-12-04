@@ -23,7 +23,7 @@ const handleAdd = (newProduct) => {
             setMenu(menuUpdated);
         };
 
-    const handleDelete = (idOfProductToDelete) => { 
+const handleDelete = (idOfProductToDelete) => { 
         //1. copy du state
             const menuCopy = deepClone(menu)
         //2. manip de la copie du state
@@ -42,7 +42,7 @@ menuCopy [indexOfProductToEdit] = productBeingEdited
 setMenu(menuCopy)
  }
 
-    const resetMenu = () => { setMenu(fakeMenu.MEDIUM) }
+ const resetMenu = () => { setMenu(fakeMenu.MEDIUM) }
 
 const orderContextValue={
     isModeAdmin,
