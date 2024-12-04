@@ -8,6 +8,7 @@ export default function Button({label, Icon, className, version= "normal", onCli
     version={version} 
     onClick={onClick} >
     <span>{label}</span>
+    
     <div className="icon">{Icon && Icon }</div>
     </ButtonStyled>
   )
