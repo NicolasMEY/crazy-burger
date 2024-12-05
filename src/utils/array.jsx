@@ -1,7 +1,7 @@
 // En général les fonctions , surtout celles dans utils, doivent être testées auparavant
 
 
-export const deepClone = (array) => { JSON.parse(JSON.stringify(array)) }
+export const deepClone = (array) => { return JSON.parse(JSON.stringify(array)) }
 
 
 

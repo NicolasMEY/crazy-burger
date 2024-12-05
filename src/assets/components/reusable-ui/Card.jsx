@@ -4,10 +4,17 @@ import Button from "./Button";
 import {TiDelete}  from "react-icons/ti"
 
 export default function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable, isSelected}) {
+
   return (
-    <CardStyled className="produit" onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
+    <CardStyled className="produit" onClick={onClick} 
+    isHoverable={isHoverable} isSelected={isSelected} >
+
       <div className="card" >
-        {hasDeleteButton && <button className="delete-button" aria-label="delete-button" onClick={onDelete}><TiDelete className="icon"/></button>}
+        {hasDeleteButton && (
+        <button className="delete-button" aria-label="delete-button" onClick={onDelete}
+        ><TiDelete className="icon"/>
+        </button>)}
+
             <div className="image">
               <img src={imageSource} alt={title} />
               </div>
@@ -17,7 +24,10 @@ export default function Card({title, imageSource, leftDescription, hasDeleteButt
               <div className="description">
                 <div className="left-description">{leftDescription}</div>
               <div className="right-description">
-                <Button className="primary-button" label={"Ajouter"}/>
+                <Button 
+                className="primary-button" 
+                label={"Ajouter"}/>
+                onClick={(event) => event.stopPropagation()}
                 </div>
                 </div>
             </div>
