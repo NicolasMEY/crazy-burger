@@ -10,9 +10,9 @@ import { deepClone } from '../../../../utils/array.jsx';
 
 
 const OrderPage = () => {
-    const [isModeAdmin, setIsModeAdmin] = useState(true);
+    const [isModeAdmin, setIsModeAdmin] = useState(false);
     const [isCollapsed, setIsCollapsed] = useState(true)
-    const [currentTabSelected, setcurrentTabSelected] = useState("edit")
+    const [currentTabSelected, setCurrentTabSelected] = useState("edit")
     const [menu, setMenu] = useState(fakeMenu.MEDIUM)
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
     const [productSelected, setproductSelected] = useState(EMPTY_PRODUCT)
@@ -50,7 +50,7 @@ const orderContextValue={
     isCollapsed,
     setIsCollapsed,
     currentTabSelected, 
-    setcurrentTabSelected,
+    setCurrentTabSelected,
     menu,
     handleAdd,
     handleDelete,
