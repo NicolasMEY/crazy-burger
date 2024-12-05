@@ -4,7 +4,6 @@ import ImagePreview from "./ImagePreview";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
 import styled from "styled-components";
-import { theme } from "../../../../../../theme";
 import EditInfoMessage from "./EditInfoMessage";
 
 export default function EditForm() {
