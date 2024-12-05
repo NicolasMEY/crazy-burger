@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
 import ImagePreview from "./ImagePreview";
 import TextInput from "../../../../../reusable-ui/TextInput";
@@ -7,8 +7,7 @@ import styled from "styled-components";
 
 export default function EditForm() {
   // State
-  const {productSelected, setproductSelected, handleEdit} = useContext(OrderContext)
-
+  const {productSelected, setproductSelected, handleEdit, titleEditRef} = useContext(OrderContext)
   const inputTexts = getInputTextsConfig(productSelected)
   
   // Comportements
@@ -28,7 +27,7 @@ export default function EditForm() {
     <EditFormStyled >
 <ImagePreview imageSource={productSelected.imageSource} title={productSelected.title}/>
     < div className= "input-fields">
-    {inputTexts.map((input) => (<TextInput key={(input.id)} {...input} onChange={handleChange} version="minimalist"
+    {inputTexts.map((input) => (<TextInput key={(input.id)} {...input} onChange={handleChange} version="minimalist" ref={input.name === "title" ? titleEditRef : null}
     />))}
     </div>
     <div className="submit">

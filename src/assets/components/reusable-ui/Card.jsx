@@ -26,8 +26,8 @@ export default function Card({title, imageSource, leftDescription, hasDeleteButt
               <div className="right-description">
                 <Button 
                 className="primary-button" 
-                label={"Ajouter"}/>
-                onClick={(event) => event.stopPropagation()}
+                label={"Ajouter"}
+                onClick={(event)  => event.stopPropagation()}/>
                 </div>
                 </div>
             </div>

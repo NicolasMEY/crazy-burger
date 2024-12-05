@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../../theme';
 import Navbar from './Navbar/Navbar';
@@ -16,6 +16,9 @@ const OrderPage = () => {
     const [menu, setMenu] = useState(fakeMenu.MEDIUM)
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
     const [productSelected, setproductSelected] = useState(EMPTY_PRODUCT)
+    const titleEditRef = useRef()
+
+
 
 const handleAdd = (newProduct) => {
             const menuCopy = deepClone(menu);
@@ -42,7 +45,7 @@ menuCopy [indexOfProductToEdit] = productBeingEdited
 setMenu(menuCopy)
  }
 
- const resetMenu = () => { setMenu(fakeMenu.MEDIUM) }
+const resetMenu = () => { setMenu(fakeMenu.MEDIUM) }
 
 const orderContextValue={
     isModeAdmin,
@@ -59,7 +62,8 @@ const orderContextValue={
     setNewProduct,
     productSelected, 
     setproductSelected,
-    handleEdit
+    handleEdit,
+    titleEditRef
     }
 
     return (
