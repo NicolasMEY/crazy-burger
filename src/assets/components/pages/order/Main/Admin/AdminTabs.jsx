@@ -7,12 +7,12 @@ import OrderContext from '../../../../../context/OrderContext';
 import { getTabsConfig } from './getTabsConfig.jsx';
 
 export default function AdminTabs() {
-  const {isCollapsed, setIsCollapsed,   currentTabSelected, setcurrentTabSelected } = useContext(OrderContext)
+  const {isCollapsed, setIsCollapsed,   currentTabSelected, setCurrentTabSelected } = useContext(OrderContext)
   
   
   const selectTab = (tabSelected) => {
     setIsCollapsed(false) // ouvre moi le panel dans tous les cas
-    setcurrentTabSelected(tabSelected) // réactualise l'onglet sélectionné
+    setCurrentTabSelected(tabSelected) // réactualise l'onglet sélectionné
     }
 
     const tabs = getTabsConfig(currentTabSelected)

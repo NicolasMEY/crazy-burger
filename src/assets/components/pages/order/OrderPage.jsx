@@ -10,7 +10,7 @@ import { deepClone } from '../../../../utils/array.jsx';
 
 
 const OrderPage = () => {
-    const [isModeAdmin, setIsModeAdmin] = useState(false);
+    const [isModeAdmin, setIsModeAdmin] = useState(true);
     const [isCollapsed, setIsCollapsed] = useState(true)
     const [currentTabSelected, setCurrentTabSelected] = useState("edit")
     const [menu, setMenu] = useState(fakeMenu.MEDIUM)
