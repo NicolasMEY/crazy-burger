@@ -1,11 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import OrderContext from "../../../../../../context/OrderContext";
-import { useContext } from "react";
 import TextInput from "../../../../../reusable-ui/TextInput"
-import Button from "../../../../../reusable-ui/Button";
 import ImagePreview from "./ImagePreview";
-import SubmitMessage from "./SubmitMessage";
 import { getInputTextsConfig } from "./inputTextConfig";
 
 const Form = React.forwardRef(({product, onSubmit, onChange, children}, ref) =>  {
@@ -27,18 +23,6 @@ const inputTexts = getInputTextsConfig(product)
     />))}
     </div>
     <div className="form-footer">{children}</div>
-    {/* {onSubmit && (
-    <div className="submit">
-      <Button 
-      className="submit-button" 
-      label={"Ajouter un nouveau produit au menu"} version="success"
-      />
-    {isSubmitted && (
-    <SubmitMessage/>
-    )} 
-    {children}
-    </div>
-    )} */}
     </FormStyled>
   )
 })
