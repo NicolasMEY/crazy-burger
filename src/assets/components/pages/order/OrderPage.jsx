@@ -1,36 +1,51 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../../theme';
 import Navbar from './Navbar/Navbar';
 import Main from './Main/Main';
 import OrderContext from "../../../context/OrderContext.jsx"
 import {fakeMenu } from "../../../fakeData/fakeMenu"
-import { EMPTY_PRODUCT } from './Main/Admin/AdminPanel/AddForm.jsx';
+import { EMPTY_PRODUCT } from '../../../enums/product.jsx';
+import { deepClone } from '../../../../utils/array.jsx';
+
 
 const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(true);
     const [isCollapsed, setIsCollapsed] = useState(true)
-    const [currentTabSelected, setcurrentTabSelected] = useState("add")
+    const [currentTabSelected, setCurrentTabSelected] = useState("edit")
     const [menu, setMenu] = useState(fakeMenu.MEDIUM)
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+    const [productSelected, setproductSelected] = useState(EMPTY_PRODUCT)
+    const titleEditRef = useRef()
 
-    const handleAdd = (newProduct) => {
-            const menuCopy = [...menu];
+
+
+const handleAdd = (newProduct) => {
+            const menuCopy = deepClone(menu);
             const menuUpdated = [newProduct, ...menuCopy];
             setMenu(menuUpdated);
         };
 
-    const handleDelete = (idOfProductToDelete) => { 
+const handleDelete = (idOfProductToDelete) => { 
         //1. copy du state
-            const menuCopy = [...menu]
+            const menuCopy = deepClone(menu)
         //2. manip de la copie du state
             const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
         //3. update du state
             setMenu(menuUpdated)
         }
 
-    const resetMenu = () => { setMenu(fakeMenu.MEDIUM) }
+const handleEdit = (productBeingEdited) =>
+// Copy du state en mode deep clone, alternative plus puissante au destructuring qui reste superficiel [...menu]
+{ const menuCopy = deepClone(menu)
+    //2. Manip de la copie du state
+const indexOfProductToEdit = menu.findIndex((menuProduct) => menuProduct.id === productBeingEdited.id )
+menuCopy [indexOfProductToEdit] = productBeingEdited
+// 3. Update du state
+setMenu(menuCopy)
+ }
 
+const resetMenu = () => { setMenu(fakeMenu.MEDIUM) }
 
 const orderContextValue={
     isModeAdmin,
@@ -38,13 +53,17 @@ const orderContextValue={
     isCollapsed,
     setIsCollapsed,
     currentTabSelected, 
-    setcurrentTabSelected,
+    setCurrentTabSelected,
     menu,
     handleAdd,
     handleDelete,
     resetMenu,
     newProduct,
-    setNewProduct
+    setNewProduct,
+    productSelected, 
+    setproductSelected,
+    handleEdit,
+    titleEditRef
     }
 
     return (
@@ -77,3 +96,6 @@ const OrderPageStyled = styled.div`
     border-radius: ${theme.borderRadius.extraRound};
 }
 `;
+
+
+

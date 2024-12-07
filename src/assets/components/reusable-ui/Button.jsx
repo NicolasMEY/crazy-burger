@@ -8,6 +8,7 @@ export default function Button({label, Icon, className, version= "normal", onCli
     version={version} 
     onClick={onClick} >
     <span>{label}</span>
+    
     <div className="icon">{Icon && Icon }</div>
     </ButtonStyled>
   )
@@ -86,7 +87,8 @@ const extraStyleSuccess = css`
   background: ${theme.colors.success};
   border: 1px solid ${theme.colors.success};
   border-radius: ${theme.borderRadius.round};
-  height: 35px;
+  /* height: 35px; */
+  height: 100%;
   padding: 0 1.5em;
   font-weight: ${theme.weights.semiBold};
 

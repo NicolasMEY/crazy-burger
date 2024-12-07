@@ -6,18 +6,40 @@ import Card from "../../../../reusable-ui/Card";
 import OrderContext from "../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { checkIfProductIsClicked } from "./helper";
+import {EMPTY_PRODUCT} from "../../../../../enums/product.jsx"
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
 
 export default function Menu() {
-const {menu, isModeAdmin, handleDelete, resetMenu} = useContext(OrderContext)
+const {menu, isModeAdmin, handleDelete, resetMenu, productSelected, setproductSelected, setIsCollapsed,
+  setCurrentTabSelected,titleEditRef,
+} = useContext(OrderContext)
+
+
+// Comportement (gestionnaires d'événement ou "event handlers")
+
+const handleClick = async (idProductClicked) => {
+  if(!isModeAdmin) return
+  setIsCollapsed(false)
+  setCurrentTabSelected("edit")
+  const productClickedOn = menu.find((product) => product.id === idProductClicked)
+   setproductSelected(productClickedOn)
+   setTimeout(() => titleEditRef.current.focus(), 0)
+}
 
 // Affichage
 if (menu.length === 0) {
   if(!isModeAdmin) return <EmptyMenuClient/>
-
   return (
     <EmptyMenuAdmin onReset={resetMenu}/>)
+  }
+  
+  const handleCardDelete = (event, idProductToDelete) => {
+    event.stopPropagation()
+    handleDelete(idProductToDelete)
+    idProductToDelete === productSelected.id &&setproductSelected(EMPTY_PRODUCT)
+    titleEditRef.current.focus()
   }
   
   return (
@@ -29,10 +51,13 @@ if (menu.length === 0) {
         title={title} 
         imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT } leftDescription={formatPrice(price)}
         hasDeleteButton={isModeAdmin}
-        onDelete={() => handleDelete(id)}
-        />)
-      } )
-    }
+        onDelete={(event) => handleCardDelete(event, id)}
+        onClick={() => handleClick(id)}
+        isHoverable={isModeAdmin}
+        isSelected= {checkIfProductIsClicked(id, productSelected.id)}
+        />
+        )
+      })}
     </MenuStyled>
   )
 }

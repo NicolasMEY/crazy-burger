@@ -3,17 +3,19 @@ import styled from 'styled-components';
 import { theme } from '../../../../../../theme/index.js';
 import OrderContext from '../../../../../../context/OrderContext.jsx';
 import { getTabSelected, getTabsConfig } from '../getTabsConfig.jsx';
+import { EMPTY_PRODUCT } from '../../../../../../enums/product.jsx';
 
 export default function AdminPanel() {
-  const { currentTabSelected } = useContext(OrderContext)
+  const { currentTabSelected, productSelected } = useContext(OrderContext)
   
-const tabs = getTabsConfig(currentTabSelected)
-const tabSelected =  getTabSelected  (tabs, currentTabSelected)
+  const hasAlreadyBeenClicked = productSelected !== EMPTY_PRODUCT
+  const tabs = getTabsConfig(hasAlreadyBeenClicked)
+  const tabSelected =  getTabSelected  (tabs, currentTabSelected)
 
   return (
-    <AdminPanelStyled className='panel-admin'>
-      {currentTabSelected === tabSelected.index && tabSelected.Content}
-      </AdminPanelStyled>
+    <AdminPanelStyled >
+      {tabSelected && tabSelected.Content}
+    </AdminPanelStyled>
   )
 }
 const AdminPanelStyled = styled.div`
@@ -27,3 +29,5 @@ const AdminPanelStyled = styled.div`
   // les 5% c'est pour les aligner avec le tab.
 
 `;
+
+
