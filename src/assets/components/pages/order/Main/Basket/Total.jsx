@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import Header from "../../../../reusable-ui/Header";
 
 export default function Total({amountToPay}) {
   return (
