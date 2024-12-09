@@ -3,7 +3,7 @@ import { theme } from "../../theme";
 import Button from "./Button";
 import {TiDelete}  from "react-icons/ti"
 
-export default function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable, isSelected}) {
+export default function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable, isSelected, onAdd}) {
 
   return (
     <CardStyled className="produit" onClick={onClick} 
@@ -27,7 +27,7 @@ export default function Card({title, imageSource, leftDescription, hasDeleteButt
                 <Button 
                 className="primary-button" 
                 label={"Ajouter"}
-                onClick={(event)  => event.stopPropagation()}/>
+                onClick={onAdd}/>
                 </div>
                 </div>
             </div>

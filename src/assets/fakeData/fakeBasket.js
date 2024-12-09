@@ -1,3 +1,5 @@
+import { EMPTY_PRODUCT } from "../enums/product";
+
 export const EMPTY = [];
 
 export const SMALL = [

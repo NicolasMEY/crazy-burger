@@ -11,7 +11,7 @@ import {EMPTY_PRODUCT, IMAGE_COMING_SOON} from "../../../../../enums/product.jsx
 
 export default function Menu() {
 const {menu, isModeAdmin, handleDelete, resetMenu, productSelected, setproductSelected, setIsCollapsed,
-  setCurrentTabSelected,titleEditRef,
+  setCurrentTabSelected,titleEditRef, handleAddToBasket
 } = useContext(OrderContext)
 
 
@@ -19,9 +19,11 @@ const {menu, isModeAdmin, handleDelete, resetMenu, productSelected, setproductSe
 
 const handleClick = async (idProductClicked) => {
   if(!isModeAdmin) return
+
   setIsCollapsed(false)
   setCurrentTabSelected("edit")
-  const productClickedOn = menu.find((product) => product.id === idProductClicked)
+  // const productClickedOn = menu.find((product) => product.id === idProductClicked)
+  const productClickedOn = find(idProductClicked, menu)
    setproductSelected(productClickedOn)
    setTimeout(() => titleEditRef.current.focus(), 0)
 }
@@ -36,10 +38,15 @@ if (menu.length === 0) {
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
     handleDelete(idProductToDelete)
-    idProductToDelete === productSelected.id &&setproductSelected(EMPTY_PRODUCT)
+    idProductToDelete === productSelected.id && setproductSelected(EMPTY_PRODUCT)
     titleEditRef.current.focus()
   }
   
+  const handleAddButton = (event, idProductToAdd) => {event.stopPropagation()
+    // const productToAdd = menu.find((menuProduct)=> menuProduct.id === idProductToAdd )
+    const productToAdd = find(idProductToAdd, menu)
+    handleAddToBasket(productToAdd)}
+
   return (
     <MenuStyled className="menu" >
       {menu.map(({id, title, imageSource, price} ) => {
@@ -53,6 +60,7 @@ if (menu.length === 0) {
         onClick={() => handleClick(id)}
         isHoverable={isModeAdmin}
         isSelected= {checkIfProductIsClicked(id, productSelected.id)}
+        onAdd={(event) => handleAddButton(event, id)}
         />
         )
       })}
