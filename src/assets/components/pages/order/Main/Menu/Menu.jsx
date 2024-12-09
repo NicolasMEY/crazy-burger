@@ -7,9 +7,7 @@ import OrderContext from "../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
-import {EMPTY_PRODUCT} from "../../../../../enums/product.jsx"
-
-const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
+import {EMPTY_PRODUCT, IMAGE_COMING_SOON} from "../../../../../enums/product.jsx"
 
 export default function Menu() {
 const {menu, isModeAdmin, handleDelete, resetMenu, productSelected, setproductSelected, setIsCollapsed,
@@ -49,7 +47,7 @@ if (menu.length === 0) {
         <Card 
         key={id} 
         title={title} 
-        imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT } leftDescription={formatPrice(price)}
+        imageSource={imageSource ? imageSource : IMAGE_COMING_SOON } leftDescription={formatPrice(price)}
         hasDeleteButton={isModeAdmin}
         onDelete={(event) => handleCardDelete(event, id)}
         onClick={() => handleClick(id)}
