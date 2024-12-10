@@ -15,6 +15,7 @@ export default function Basket() {
   const isBasketEmpty = basket.length === 0
 
   const sumToPay = basket.reduce((total, basketProduct) => {
+    // if(isNaN(basketProduct.price)) return total
     total += basketProduct.price * basketProduct.quantity
     return total
   }, 0)
