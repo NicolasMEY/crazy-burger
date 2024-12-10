@@ -10,9 +10,10 @@ export default function BasketCard({
   quantity,
   imageSource,
   className,
+  isModeAdmin
 }) {
   return (
-    <BasketCardStyled className={className} >
+    <BasketCardStyled className={className} isModeAdmin={isModeAdmin} >
       <div className="delete-button" >
         <MdDeleteForever className="icon" />
       </div>
@@ -61,7 +62,6 @@ const BasketCardStyled = styled.div`
   }
 
   .text-info {
-    /* user-select: none; */
     box-sizing: border-box;
     display: grid;
     grid-template-columns: 70% 1fr;
@@ -72,7 +72,6 @@ const BasketCardStyled = styled.div`
       display: grid;
       grid-template-rows: 60% 40%;
       margin-left: 21px;
-      /* align-items: center; */
       .title {
         display: flex;
         align-items: center;
@@ -81,11 +80,9 @@ const BasketCardStyled = styled.div`
         line-height: 32px;
         font-weight: ${theme.weights.bold};
         color: ${theme.colors.dark};
-        /* sans cette div avec "min-width: 0", l'ellipsis ne fonctionne pas dans un span : https://semicolon.dev/tutorial/css/text-overflow-ellipsis-doesnt-work#:~:text=If%20your%20text%2Doverflow%20is,Grid%20or%20on%20a%20Table. */
         min-width: 0;
         span {
           overflow: hidden;
-          /* width: 100%; */
           white-space: nowrap;
           text-overflow: ellipsis;
         }
@@ -95,12 +92,10 @@ const BasketCardStyled = styled.div`
         font-size: ${theme.fonts.SM};
         font-weight: ${theme.weights.medium};
         font-family: ${theme.family.openSans};
-        /* color: ${theme.colors.white}; */
       }
     }
 
     .quantity {
-      box-sizing: border-box;
       font-weight: ${theme.weights.medium};
       display: flex;
       align-items: center;
@@ -116,7 +111,7 @@ const BasketCardStyled = styled.div`
   }
 
   /* hover de la card */
-  :hover {
+  &:hover {
     .delete-button {
       border: none;
       box-sizing: border-box;
@@ -139,19 +134,16 @@ const BasketCardStyled = styled.div`
         width: ${theme.fonts.P3};
         height: ${theme.fonts.P3};
       }
-
-      /* behaviour on delete-button hover */
-      :hover {
-        .icon {
-          color: ${theme.colors.dark};
-        }
-        :active {
-          .icon {
-            color: ${theme.colors.white};
-          }
-        }
-      }
     }
   }
+
+  .delete-button:hover .icon {
+    color: ${theme.colors.dark};
+  }
+
+  .delete-button:active .icon {
+    color: ${theme.colors.white};
+  }
 `
+
 

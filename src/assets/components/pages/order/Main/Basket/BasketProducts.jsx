@@ -3,14 +3,15 @@ import styled from 'styled-components';
 import BasketCard from './BasketCard';
 import { IMAGE_COMING_SOON } from '../../../../../enums/product';
 
-export default function BasketProducts({basket}) {
+export default function BasketProducts({basket, isModeAdmin}) {
   return (
     <BasketProductStyled>
       {basket.map((basketProduct) => (
     <div className='basket-card' key={basketProduct.id}>
         <BasketCard  
         {...basketProduct} 
-        imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_COMING_SOON }/>
+        imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_COMING_SOON }
+        isModeAdmin={isModeAdmin}/>
     </div> 
     ))}</BasketProductStyled>
   )
