@@ -1,42 +1,49 @@
 import { useState } from "react"
-import {fakeBasket} from "../fakeData/fakeBasket"
-import {deepClone, find} from "../../utils/array.jsx"
+import { fakeBasket } from "../fakeData/fakeBasket"
+import {deepClone, find, findIndex} from "../../utils/array"
 
-export const useBasket = () => { 
-    const [basket, setBasket] = useState(fakeBasket.EMPTY)
+export const useBasket = () => {
+  const [basket, setBasket] = useState(fakeBasket.EMPTY)
 
-const handleAddToBasket = (productToAdd) => { 
-// 1. copy du state
+  const handleAddToBasket = (productToAdd) => {
     const basketCopy = deepClone(basket)
-    const isPoductAlreadyInBasket = find(productToAdd.id, basketCopy) !== undefined
-    // console.log("isProductAlreadyInBasket:", isPoductAlreadyInBasket);
+    const isProductAlreadyInBasket = find(productToAdd.id, basketCopy) !== undefined
 
-// 2. manip de la copie du state
-    // 1er cas le produit n'est pas déja dans le basket
-        if(!isPoductAlreadyInBasket) {
-            const newBasketProduct = {
-                ...productToAdd,
-                quantity: 1
-            }
-
-            const basketUpdated = [newBasketProduct, ...basketCopy]
-            // Pour avoir le dernier produit en haut on écrit bien dans cet ordre là
-
-            // 3. update du state
-            setBasket(basketUpdated)
-        } else {
-            // 2ème cas le produit est déja dans le basket
-            const indexOfBasketProductToIncrement = basket.findIndex((basketProduct) => basketProduct.id === productToAdd.id )
-           
-
-            console.log(
-                "basket[indexOfBasketProductToIncrement]:",
-            basketCopy [indexOfBasketProductToIncrement])
-            basketCopy [indexOfBasketProductToIncrement].quantity += 1
-
-            // 3. update du state
-            setBasket(basketCopy)
-        }
+    // 1er cas : le produit n'est pas déjà dans le basket
+    if (!isProductAlreadyInBasket) {
+      createNewProductInBasket(productToAdd, basketCopy, setBasket)
+      return
     }
-    return {basket, handleAddToBasket}
- } 
+    // 2ème cas : le produit est déjà dans le basket
+    incrementProductAlreadyInBasket(productToAdd, basketCopy)
+  }
+
+  const incrementProductAlreadyInBasket = (productToAdd, basketCopy) => {
+    const indexOfBasketProductToIncrement = findIndex(productToAdd.id, basketCopy)
+    basketCopy[indexOfBasketProductToIncrement].quantity += 1
+    setBasket(basketCopy)
+  }
+
+  const createNewProductInBasket = (productToAdd, basketCopy, setBasket) => {
+    const newBasketProduct = {
+      ...productToAdd,
+      quantity: 1,
+    }
+    const basketUpdated = [newBasketProduct, ...basketCopy]
+    setBasket(basketUpdated)
+  }
+
+  const handleDeleteBasketProduct = (idBasketProduct) => {
+    //1. copy du state (optional because filter returns a new array )
+    const basketCopy = deepClone(basket)
+
+    //2. manip de la copie state
+    //const basketUpdated = basketCopy.filter((product) => product.id !== idBasketProduct)
+    const basketUpdated = filter(idBasketProduct, basketCopy)
+
+    //3. update du state
+    setBasket(basketUpdated)
+  }
+
+  return { basket, handleAddToBasket, handleDeleteBasketProduct }
+}
