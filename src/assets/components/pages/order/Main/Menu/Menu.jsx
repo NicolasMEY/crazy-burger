@@ -12,7 +12,7 @@ import { find } from "../../../../../../utils/array.jsx";
 
 export default function Menu() {
 const {menu, isModeAdmin, handleDelete, resetMenu, productSelected, setproductSelected, setIsCollapsed,
-  setCurrentTabSelected,titleEditRef, handleAddToBasket
+  setCurrentTabSelected,titleEditRef, handleAddToBasket, handleDeleteBasketProduct
 } = useContext(OrderContext)
 
 
@@ -38,6 +38,7 @@ if (menu.length === 0) {
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
     handleDelete(idProductToDelete)
+    handleDeleteBasketProduct(idProductToDelete)
     idProductToDelete === productSelected.id && setproductSelected(EMPTY_PRODUCT)
     titleEditRef.current.focus()
   }
