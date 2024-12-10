@@ -17,7 +17,7 @@ const OrderPage = () => {
     const [productSelected, setproductSelected] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
     const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
-    const {basket, handleAddToBasket} = useBasket()
+    const {basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
 
 
 const orderContextValue={
@@ -39,6 +39,7 @@ const orderContextValue={
     titleEditRef,
     basket,
     handleAddToBasket,
+    handleDeleteBasketProduct,
     }
 
     return (

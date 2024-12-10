@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { fakeBasket } from "../fakeData/fakeBasket"
-import {deepClone, find, findIndex} from "../../utils/array"
+import {deepClone, filter, find, findIndex} from "../../utils/array"
 
 export const useBasket = () => {
   const [basket, setBasket] = useState(fakeBasket.EMPTY)
