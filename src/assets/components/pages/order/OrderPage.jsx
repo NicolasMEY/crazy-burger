@@ -6,6 +6,7 @@ import Main from './Main/Main';
 import OrderContext from "../../../context/OrderContext.jsx"
 import { EMPTY_PRODUCT } from '../../../enums/product.jsx';
 import { useMenu } from '../../../hooks/useMenu.jsx';
+import { useBasket } from '../../../hooks/useBasket.jsx';
 
 
 const OrderPage = () => {
@@ -16,6 +17,7 @@ const OrderPage = () => {
     const [productSelected, setproductSelected] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
     const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
+    const {basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
 
 
 const orderContextValue={
@@ -34,7 +36,10 @@ const orderContextValue={
     productSelected, 
     setproductSelected,
     handleEdit,
-    titleEditRef
+    titleEditRef,
+    basket,
+    handleAddToBasket,
+    handleDeleteBasketProduct,
     }
 
     return (
