@@ -197,7 +197,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "7",
-    imageSource: "/images/burger-bacon-egg.png",
+    imageSource: "/imagesCards/burger-bacon-egg.png",
     title: "Burger Smoke Bdhbedhbeheb",
     price: 5.598,
     quantity: 1,

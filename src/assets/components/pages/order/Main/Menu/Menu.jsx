@@ -8,6 +8,7 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
 import {EMPTY_PRODUCT, IMAGE_COMING_SOON} from "../../../../../enums/product.jsx"
+import { find } from "../../../../../../utils/array.jsx";
 
 export default function Menu() {
 const {menu, isModeAdmin, handleDelete, resetMenu, productSelected, setproductSelected, setIsCollapsed,
@@ -16,7 +17,6 @@ const {menu, isModeAdmin, handleDelete, resetMenu, productSelected, setproductSe
 
 
 // Comportement (gestionnaires d'événement ou "event handlers")
-
 const handleClick = async (idProductClicked) => {
   if(!isModeAdmin) return
 
@@ -42,10 +42,12 @@ if (menu.length === 0) {
     titleEditRef.current.focus()
   }
   
-  const handleAddButton = (event, idProductToAdd) => {event.stopPropagation()
+  const handleAddButton = (event, idProductToAdd) => {
+    event.stopPropagation()
     // const productToAdd = menu.find((menuProduct)=> menuProduct.id === idProductToAdd )
     const productToAdd = find(idProductToAdd, menu)
     handleAddToBasket(productToAdd)}
+    
 
   return (
     <MenuStyled className="menu" >

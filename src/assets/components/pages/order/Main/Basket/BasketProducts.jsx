@@ -5,9 +5,12 @@ import { IMAGE_COMING_SOON } from '../../../../../enums/product';
 
 export default function BasketProducts({basket}) {
   return (
-    <BasketProductStyled>{basket.map((basketProduct) => (
+    <BasketProductStyled>
+      {basket.map((basketProduct) => (
     <div className='basket-card' key={basketProduct.id}>
-        <BasketCard  {...basketProduct} imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_COMING_SOON }/>
+        <BasketCard  
+        {...basketProduct} 
+        imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_COMING_SOON }/>
     </div> 
     ))}</BasketProductStyled>
   )
