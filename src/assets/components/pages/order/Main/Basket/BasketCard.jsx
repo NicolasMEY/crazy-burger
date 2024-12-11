@@ -155,9 +155,10 @@ ${({isClickable, isSelected}) => isClickable && isSelected && selectedStyled }
 `
 
 const selectedStyled = css`
-background-color: ${theme.colors.primary};
-.price
-.quantity {
-  color: ${theme.colors.white}
-}
-`
+  background-color: ${theme.colors.primary};
+
+  .price,
+  .quantity {
+    color: ${theme.colors.white};
+  }
+`;
