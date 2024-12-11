@@ -3,17 +3,19 @@
 export const deepClone = (array) => { return JSON.parse(JSON.stringify(array)) }
 
 
-export const find = (id, array) => { return array.find((itemInArray)=> itemInArray.id === id )  }
+export const findObjectById = (id, array) => { return array.find((itemInArray)=> itemInArray.id === id )  }
 
 
-export const findIndex = (idWithUnknownIndex, array) => { return array.findIndex((itemInArray) => itemInArray.id === idWithUnknownIndex
+export const findIndexById = (idWithUnknownIndex, array) => { return array.findIndex((itemInArray) => itemInArray.id === idWithUnknownIndex
     ) }
 
-export const filter = (idOfItemToRemove, array) => {
+export const removeObjectById = (idOfItemToRemove, array) => {
     return array.filter((item) => item.id !== idOfItemToRemove);
 };
 
-
+export const isEmpty = (array) => {
+    return array.length === 0
+}
 
 
 // Exemple de test de la fonction deepClone
