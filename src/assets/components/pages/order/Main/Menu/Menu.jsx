@@ -45,9 +45,8 @@ if (isEmpty (menu)) {
   
   const handleAddButton = (event, idProductToAdd) => {
     event.stopPropagation()
-    // const productToAdd = menu.find((menuProduct)=> menuProduct.id === idProductToAdd )
-    const productToAdd = findObjectById(idProductToAdd, menu)
-    handleAddToBasket(productToAdd)}
+    handleAddToBasket(idProductToAdd)
+  }
     
 
   return (
