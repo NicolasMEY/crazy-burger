@@ -15,7 +15,7 @@ const handleOnDelete = (id) => {handleDeleteBasketProduct(id)}
         {...basketProduct} 
         imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_COMING_SOON }
         onDelete={() => handleOnDelete(basketProduct.id)}
-        isModeAdmin={isModeAdmin}
+        isClickable={isModeAdmin}
         handleDeleteBasketProduct={handleDeleteBasketProduct}/>
     </div> 
     ))}</BasketProductStyled>
