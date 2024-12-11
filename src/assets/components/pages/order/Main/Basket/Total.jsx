@@ -3,11 +3,14 @@ import OrderContext from "../../../../../context/OrderContext.jsx"
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import Header from "../../../../reusable-ui/Header";
-import { calculateSumToPay, formatPrice } from "../../../../../../utils/maths";
+import { formatPrice } from "../../../../../../utils/maths";
+import { calculateSumToPay } from "./helper.js";
 
 export default function Total() {
   const {basket, menu} = useContext(OrderContext)
+
   const sumToPay = calculateSumToPay(basket, menu)
+  
   return (
     <Header>
     <TotalStyled>
