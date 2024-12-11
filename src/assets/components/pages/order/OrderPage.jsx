@@ -7,6 +7,7 @@ import OrderContext from "../../../context/OrderContext.jsx"
 import { EMPTY_PRODUCT } from '../../../enums/product.jsx';
 import { useMenu } from '../../../hooks/useMenu.jsx';
 import { useBasket } from '../../../hooks/useBasket.jsx';
+import { findObjectById } from '../../../../utils/array.jsx';
 
 
 const OrderPage = () => {
@@ -18,6 +19,15 @@ const OrderPage = () => {
     const titleEditRef = useRef()
     const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
     const {basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
+
+    const handleProductSelected = (idProductClicked) => {
+        const productClickedOn = findObjectById(idProductClicked, menu)
+        setIsCollapsed(false)
+        setCurrentTabSelected("edit")
+        // const productClickedOn = menu.find((product) => product.id === idProductClicked)
+         setproductSelected(productClickedOn)
+         setTimeout(() => titleEditRef.current.focus(), 0)
+    }
 
 
 const orderContextValue={
@@ -40,6 +50,7 @@ const orderContextValue={
     basket,
     handleAddToBasket,
     handleDeleteBasketProduct,
+    handleProductSelected,
     }
 
     return (

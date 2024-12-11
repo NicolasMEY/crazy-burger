@@ -8,47 +8,33 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
 import {EMPTY_PRODUCT, IMAGE_COMING_SOON} from "../../../../../enums/product.jsx"
-import { find } from "../../../../../../utils/array.jsx";
+import { isEmpty } from "../../../../../../utils/array.jsx";
 
 export default function Menu() {
-const {menu, isModeAdmin, handleDelete, resetMenu, productSelected, setproductSelected, setIsCollapsed,
-  setCurrentTabSelected,titleEditRef, handleAddToBasket, handleDeleteBasketProduct
+const {menu, isModeAdmin, handleDelete, resetMenu, productSelected, setproductSelected, handleAddToBasket, handleDeleteBasketProduct, handleProductSelected
 } = useContext(OrderContext)
 
 
 // Comportement (gestionnaires d'événement ou "event handlers")
-const handleClick = async (idProductClicked) => {
-  if(!isModeAdmin) return
 
-  setIsCollapsed(false)
-  setCurrentTabSelected("edit")
-  // const productClickedOn = menu.find((product) => product.id === idProductClicked)
-  const productClickedOn = find(idProductClicked, menu)
-   setproductSelected(productClickedOn)
-   setTimeout(() => titleEditRef.current.focus(), 0)
+const handleCardDelete = (event, idProductToDelete) => {
+  event.stopPropagation()
+  handleDelete(idProductToDelete)
+  handleDeleteBasketProduct(idProductToDelete)
+  idProductToDelete === productSelected.id && setproductSelected(EMPTY_PRODUCT)
+}
+
+const handleAddButton = (event, idProductToAdd) => {
+  event.stopPropagation()
+  handleAddToBasket(idProductToAdd)
 }
 
 // Affichage
-if (menu.length === 0) {
+if (isEmpty (menu)) {
   if(!isModeAdmin) return <EmptyMenuClient/>
   return (
     <EmptyMenuAdmin onReset={resetMenu}/>)
   }
-  
-  const handleCardDelete = (event, idProductToDelete) => {
-    event.stopPropagation()
-    handleDelete(idProductToDelete)
-    handleDeleteBasketProduct(idProductToDelete)
-    idProductToDelete === productSelected.id && setproductSelected(EMPTY_PRODUCT)
-    titleEditRef.current.focus()
-  }
-  
-  const handleAddButton = (event, idProductToAdd) => {
-    event.stopPropagation()
-    // const productToAdd = menu.find((menuProduct)=> menuProduct.id === idProductToAdd )
-    const productToAdd = find(idProductToAdd, menu)
-    handleAddToBasket(productToAdd)}
-    
 
   return (
     <MenuStyled className="menu" >
@@ -60,7 +46,7 @@ if (menu.length === 0) {
         imageSource={imageSource ? imageSource : IMAGE_COMING_SOON } leftDescription={formatPrice(price)}
         hasDeleteButton={isModeAdmin}
         onDelete={(event) => handleCardDelete(event, id)}
-        onClick={() => handleClick(id)}
+        onClick={isModeAdmin ? () => handleProductSelected(id) : null }
         isHoverable={isModeAdmin}
         isSelected= {checkIfProductIsClicked(id, productSelected.id)}
         onAdd={(event) => handleAddButton(event, id)}
