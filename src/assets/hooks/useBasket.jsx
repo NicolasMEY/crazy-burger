@@ -30,7 +30,7 @@ const incrementProductAlreadyInBasket = (idProductToAdd, basketCopy) => {
     setBasket(newbasket)
   }
 
-const handleDeleteBasketProduct = (idBasketProduct) => {
+  const handleDeleteBasketProduct = (idBasketProduct) => {
     //1. copy du state (optional because filter returns a new array )
     const basketCopy = deepClone(basket)
 
