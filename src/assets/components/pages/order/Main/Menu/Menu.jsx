@@ -9,6 +9,7 @@ import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
 import {EMPTY_PRODUCT, IMAGE_COMING_SOON} from "../../../../../enums/product.jsx"
 import { isEmpty } from "../../../../../../utils/array.jsx";
+import Loader from "./Loader.jsx";
 
 export default function Menu() {
 const {menu, isModeAdmin, handleDelete, resetMenu, productSelected, setproductSelected, handleAddToBasket, handleDeleteBasketProduct, handleProductSelected
@@ -30,6 +31,9 @@ const handleAddButton = (event, idProductToAdd) => {
 }
 
 // Affichage
+if(menu === undefined) return <Loader/>
+
+
 if (isEmpty (menu)) {
   if(!isModeAdmin) return <EmptyMenuClient/>
   return (
