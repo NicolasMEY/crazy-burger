@@ -9,7 +9,6 @@ import { useMenu } from '../../../hooks/useMenu.jsx';
 import { useBasket } from '../../../hooks/useBasket.jsx';
 import { findObjectById } from '../../../../utils/array.jsx';
 
-
 const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(true);
     const [isCollapsed, setIsCollapsed] = useState(true)
@@ -28,7 +27,6 @@ const OrderPage = () => {
          setproductSelected(productClickedOn)
          setTimeout(() => titleEditRef.current.focus(), 0)
     }
-
 
 const orderContextValue={
     isModeAdmin,
@@ -52,6 +50,7 @@ const orderContextValue={
     handleDeleteBasketProduct,
     handleProductSelected,
     }
+
 
     return (
         <OrderContext.Provider value={orderContextValue}>
