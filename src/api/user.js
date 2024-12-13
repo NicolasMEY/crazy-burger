@@ -30,6 +30,7 @@ export const createUser = (userId) => {
 export const authenticateUser = async (userId) => {
   // 1. Récupère un existingUser
   const existingUser = await getUser(userId);
+
   // 2. Sinon tu créer un newUser
   if (existingUser === undefined) {
     createUser(userId);

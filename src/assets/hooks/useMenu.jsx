@@ -14,13 +14,14 @@ const handleAdd = (newProduct, username) => {
     syncBothMenus(username, menuUpdated)
 };
 
-const handleDelete = (idOfProductToDelete) => { 
+const handleDelete = (idOfProductToDelete, username) => { 
 //1. copy du state
     const menuCopy = deepClone(menu)
 //2. manip de la copie du state
     const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
 //3. update du state
     setMenu(menuUpdated)
+    syncBothMenus(username, menuUpdated)
 }
 
 const handleEdit = (productBeingEdited) =>

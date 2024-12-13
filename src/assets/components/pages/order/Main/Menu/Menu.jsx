@@ -12,7 +12,7 @@ import { isEmpty } from "../../../../../../utils/array.jsx";
 import Loader from "./Loader.jsx";
 
 export default function Menu() {
-const {menu, isModeAdmin, handleDelete, resetMenu, productSelected, setproductSelected, handleAddToBasket, handleDeleteBasketProduct, handleProductSelected
+const {username, menu, isModeAdmin, handleDelete, resetMenu, productSelected, setproductSelected, handleAddToBasket, handleDeleteBasketProduct, handleProductSelected
 } = useContext(OrderContext)
 
 
@@ -20,7 +20,7 @@ const {menu, isModeAdmin, handleDelete, resetMenu, productSelected, setproductSe
 
 const handleCardDelete = (event, idProductToDelete) => {
   event.stopPropagation()
-  handleDelete(idProductToDelete)
+  handleDelete(idProductToDelete, username)
   handleDeleteBasketProduct(idProductToDelete)
   idProductToDelete === productSelected.id && setproductSelected(EMPTY_PRODUCT)
 }
