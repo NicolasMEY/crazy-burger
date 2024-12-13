@@ -24,14 +24,17 @@ const handleDelete = (idOfProductToDelete, username) => {
     syncBothMenus(username, menuUpdated)
 }
 
-const handleEdit = (productBeingEdited) =>
+const handleEdit = (productBeingEdited, username) =>
 // Copy du state en mode deep clone, alternative plus puissante au destructuring qui reste superficiel [...menu]
 { const menuCopy = deepClone(menu)
+
 //2. Manip de la copie du state
 const indexOfProductToEdit = menu.findIndex((menuProduct) => menuProduct.id === productBeingEdited.id )
 menuCopy [indexOfProductToEdit] = productBeingEdited
+
 // 3. Update du state
 setMenu(menuCopy)
+syncBothMenus(username, menuCopy)
 }
 
 const resetMenu = (username) => { setMenu(fakeMenu.MEDIUM)

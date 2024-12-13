@@ -5,7 +5,7 @@ import EditInfoMessage from "./EditInfoMessage.jsx"
 
 export default function EditForm() {
   // State
-  const {productSelected, setproductSelected, handleEdit, titleEditRef} = useContext(OrderContext)
+  const {username, productSelected, setproductSelected, handleEdit, titleEditRef} = useContext(OrderContext)
 
   
   // Comportements
@@ -18,7 +18,7 @@ export default function EditForm() {
   }
 
   setproductSelected(productBeingUpdated) // Cette ligne update le formulaire
-  handleEdit(productBeingUpdated) // cette ligne update le menu
+  handleEdit(productBeingUpdated, username) // cette ligne update le menu
 
   }
 
