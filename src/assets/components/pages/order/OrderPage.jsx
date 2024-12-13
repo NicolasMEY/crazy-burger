@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../../theme';
 import Navbar from './Navbar/Navbar';
@@ -9,6 +9,7 @@ import { useMenu } from '../../../hooks/useMenu.jsx';
 import { useBasket } from '../../../hooks/useBasket.jsx';
 import { findObjectById } from '../../../../utils/array.jsx';
 import { useParams } from 'react-router-dom';
+import { getMenu } from '../../../../api/product.js';
 
 const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(true);
@@ -17,7 +18,7 @@ const OrderPage = () => {
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
     const [productSelected, setproductSelected] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
-    const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
+    const {menu,setMenu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
     const {basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
     const {username} = useParams()
 
@@ -29,6 +30,14 @@ const OrderPage = () => {
          setproductSelected(productClickedOn)
          setTimeout(() => titleEditRef.current.focus(), 0)
     }
+
+    const initialiseMenu = async () =>  {
+        const menuReceived = await getMenu(username)
+        setMenu(menuReceived)
+    }
+
+    useEffect(() => {initialiseMenu}, [])
+
 
 const orderContextValue={
     username,
