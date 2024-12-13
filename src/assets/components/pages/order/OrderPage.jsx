@@ -8,6 +8,7 @@ import { EMPTY_PRODUCT } from '../../../enums/product.jsx';
 import { useMenu } from '../../../hooks/useMenu.jsx';
 import { useBasket } from '../../../hooks/useBasket.jsx';
 import { findObjectById } from '../../../../utils/array.jsx';
+import { useParams } from 'react-router-dom';
 
 const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(true);
@@ -18,6 +19,7 @@ const OrderPage = () => {
     const titleEditRef = useRef()
     const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
     const {basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
+    const {username} = useParams()
 
     const handleProductSelected = (idProductClicked) => {
         const productClickedOn = findObjectById(idProductClicked, menu)
@@ -29,6 +31,7 @@ const OrderPage = () => {
     }
 
 const orderContextValue={
+    username,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,
