@@ -34,7 +34,8 @@ menuCopy [indexOfProductToEdit] = productBeingEdited
 setMenu(menuCopy)
 }
 
-const resetMenu = () => { setMenu(fakeMenu.MEDIUM) } 
+const resetMenu = (username) => { setMenu(fakeMenu.MEDIUM)
+syncBothMenus(username, fakeMenu.MEDIUM) } 
 
 
 return {menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu}

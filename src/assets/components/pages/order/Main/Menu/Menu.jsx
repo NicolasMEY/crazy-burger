@@ -37,7 +37,7 @@ if(menu === undefined) return <Loader/>
 if (isEmpty (menu)) {
   if(!isModeAdmin) return <EmptyMenuClient/>
   return (
-    <EmptyMenuAdmin onReset={resetMenu}/>)
+    <EmptyMenuAdmin onReset={() => resetMenu(username)}/>)
   }
 
   return (
