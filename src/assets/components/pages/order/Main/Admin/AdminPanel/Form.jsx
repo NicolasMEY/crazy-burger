@@ -4,7 +4,7 @@ import TextInput from "../../../../../reusable-ui/TextInput"
 import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextConfig";
 
-const Form = React.forwardRef(({product, onSubmit, onChange, children}, ref) =>  {
+const Form = React.forwardRef(({product, onSubmit, onChange, onFocus, onBlur, children}, ref) =>  {
 
 const inputTexts = getInputTextsConfig(product)
 
@@ -19,6 +19,8 @@ const inputTexts = getInputTextsConfig(product)
     key={(input.id)} {...input} 
     onChange={onChange} 
     version="minimalist" 
+    onFocus={onFocus}
+    onBlur={onBlur}
     ref={ref && input.name === "title" ? ref : null}
     />))}
     </div>
