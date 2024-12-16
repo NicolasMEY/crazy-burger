@@ -42,9 +42,15 @@ if(basketReceived )
 setBasket(basketReceived)
 }
 
-    useEffect(() => {initialiseMenu}, [])
+const initialiseUserSession = async () => {
+    await initialiseMenu() 
+    initialiseBasket()
+}
 
-    useEffect(() => {initialiseBasket}, [])
+    useEffect(() => {
+        initialiseUserSession()
+    }, [])
+
 
 const orderContextValue={
     username,

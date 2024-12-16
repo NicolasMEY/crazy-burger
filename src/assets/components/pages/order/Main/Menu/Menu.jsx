@@ -21,7 +21,7 @@ const {username, menu, isModeAdmin, handleDelete, resetMenu, productSelected, se
 const handleCardDelete = (event, idProductToDelete) => {
   event.stopPropagation()
   handleDelete(idProductToDelete, username)
-  handleDeleteBasketProduct(idProductToDelete)
+  handleDeleteBasketProduct(idProductToDelete, username)
   idProductToDelete === productSelected.id && setproductSelected(EMPTY_PRODUCT)
 }
 

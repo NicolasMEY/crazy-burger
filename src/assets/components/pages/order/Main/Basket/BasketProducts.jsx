@@ -12,7 +12,8 @@ const {basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelect
 
 const handleOnDelete = (event, id) => {
 event.stopPropagation()
-{handleDeleteBasketProduct(id)}}
+handleDeleteBasketProduct(id, username)
+}
 
 
   return (
