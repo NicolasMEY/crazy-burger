@@ -10,6 +10,7 @@ import { useBasket } from '../../../hooks/useBasket.jsx';
 import { findObjectById } from '../../../../utils/array.jsx';
 import { useParams } from 'react-router-dom';
 import { getMenu } from '../../../../api/product.js';
+import { getLocalStorage } from '../../../../utils/window.jsx';
 
 const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(true);
@@ -19,7 +20,7 @@ const OrderPage = () => {
     const [productSelected, setproductSelected] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
     const {menu,setMenu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
-    const {basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
+    const {basket,setBasket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
     const {username} = useParams()
 
     const handleProductSelected = (idProductClicked) => {
@@ -36,8 +37,13 @@ const OrderPage = () => {
         setMenu(menuReceived)
     }
 
+const initialiseBasket = () => { const basketReceived = getLocalStorage(username)  // localStorage est aynchrone, pas besoin de "await"
+setBasket(basketReceived)
+}
+
     useEffect(() => {initialiseMenu}, [])
 
+    useEffect(() => {initialiseBasket}, [])
 
 const orderContextValue={
     username,
