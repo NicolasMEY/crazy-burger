@@ -27,7 +27,7 @@ const handleCardDelete = (event, idProductToDelete) => {
 
 const handleAddButton = (event, idProductToAdd) => {
   event.stopPropagation()
-  handleAddToBasket(idProductToAdd)
+  handleAddToBasket(idProductToAdd, username)
 }
 
 // Affichage
