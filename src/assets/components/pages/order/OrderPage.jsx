@@ -38,6 +38,7 @@ const OrderPage = () => {
     }
 
 const initialiseBasket = () => { const basketReceived = getLocalStorage(username)  // localStorage est aynchrone, pas besoin de "await"
+if(basketReceived )
 setBasket(basketReceived)
 }
 
