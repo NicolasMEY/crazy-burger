@@ -9,8 +9,9 @@ import { useMenu } from '../../../hooks/useMenu.jsx';
 import { useBasket } from '../../../hooks/useBasket.jsx';
 import { findObjectById } from '../../../../utils/array.jsx';
 import { useParams } from 'react-router-dom';
-import { getMenu } from '../../../../api/product.js';
-import { getLocalStorage } from '../../../../utils/window.jsx';
+import { initialiseUserSession } from './helpers/initialiseUserSession.jsx';
+
+
 
 const OrderPage = () => {
     const [isModeAdmin, setIsModeAdmin] = useState(true);
@@ -32,24 +33,9 @@ const OrderPage = () => {
          setTimeout(() => titleEditRef.current.focus(), 0)
     }
 
-    const initialiseMenu = async () =>  {
-        const menuReceived = await getMenu(username)
-        setMenu(menuReceived)
-    }
-
-const initialiseBasket = () => { const basketReceived = getLocalStorage(username)  // localStorage est aynchrone, pas besoin de "await"
-if(basketReceived )
-setBasket(basketReceived)
-}
-
-const initialiseUserSession = async () => {
-    await initialiseMenu() 
-    initialiseBasket()
-}
-
     useEffect(() => {
-        initialiseUserSession()
-    }, [])
+        initialiseUserSession(username, setMenu,setBasket)
+    }, []) 
 
 
 const orderContextValue={
