@@ -9,13 +9,14 @@ import { theme } from "../../../../../theme/index.js"
 import { isEmpty } from "../../../../../../utils/array.jsx"
 
 export default function Basket() {
-  const {basket} =  useContext
+  const {basket, menu} =  useContext
   (OrderContext)
+
 
   return (
     <BasketStyled>
       <Total/>
-      {isEmpty(basket) ? <EmptyBasket/> : <BasketProducts  />} 
+      {isEmpty(basket) ? <EmptyBasket isLoading={menu === undefined}/> : <BasketProducts  />} 
       <Footer />
     </BasketStyled>
   );

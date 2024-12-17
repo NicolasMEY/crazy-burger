@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../../theme';
 import Navbar from './Navbar/Navbar';
@@ -8,17 +8,20 @@ import { EMPTY_PRODUCT } from '../../../enums/product.jsx';
 import { useMenu } from '../../../hooks/useMenu.jsx';
 import { useBasket } from '../../../hooks/useBasket.jsx';
 import { findObjectById } from '../../../../utils/array.jsx';
+import { useParams } from 'react-router-dom';
+import { initialiseUserSession } from './helpers/initialiseUserSession.jsx';
 
 
 const OrderPage = () => {
-    const [isModeAdmin, setIsModeAdmin] = useState(true);
-    const [isCollapsed, setIsCollapsed] = useState(true)
+    const [isModeAdmin, setIsModeAdmin] = useState(false);
+    const [isCollapsed, setIsCollapsed] = useState(false)
     const [currentTabSelected, setCurrentTabSelected] = useState("add")
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
     const [productSelected, setproductSelected] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
-    const {menu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
-    const {basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
+    const {menu,setMenu, handleAdd, handleDelete, handleEdit, resetMenu} = useMenu()
+    const {basket,setBasket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
+    const {username} = useParams()
 
     const handleProductSelected = (idProductClicked) => {
         const productClickedOn = findObjectById(idProductClicked, menu)
@@ -29,8 +32,13 @@ const OrderPage = () => {
          setTimeout(() => titleEditRef.current.focus(), 0)
     }
 
+    useEffect(() => {
+        initialiseUserSession(username, setMenu,setBasket)
+    }, []) 
+
 
 const orderContextValue={
+    username,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,
@@ -52,6 +60,7 @@ const orderContextValue={
     handleDeleteBasketProduct,
     handleProductSelected,
     }
+
 
     return (
         <OrderContext.Provider value={orderContextValue}>
