@@ -31,6 +31,7 @@ const handleAddButton = (event, idProductToAdd) => {
 }
 
 // Affichage
+
 if(menu === undefined) return <Loader/>
 
 
