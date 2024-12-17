@@ -26,7 +26,7 @@ handleDeleteBasketProduct(id, username)
           return(
       <CSSTransition 
       appear={true}
-      classNames={"abrocit"}
+      classNames={"abricot"}
       key={basketProduct.id}
       timeout={{enter: 500, exit: 500}}
      >
@@ -39,7 +39,8 @@ handleDeleteBasketProduct(id, username)
             isClickable={isModeAdmin}
             isSelected= {checkIfProductIsClicked(basketProduct.id, productSelected.id)}
             onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null }
-            handleDeleteBasketProduct={handleDeleteBasketProduct}/>
+            handleDeleteBasketProduct={handleDeleteBasketProduct}
+            className={"pomme"}/>
         </div>
       </CSSTransition>
       )})}</TransitionGroup>
@@ -52,6 +53,51 @@ const BasketProductStyled = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+
+  .abricot-appear
+.pomme {
+  transform:translateX(100px);
+  opacity: 0%;
+}
+
+.abricot-appear-active
+.pomme {
+  transition: 0.5s;
+  transform: translateX(0px);
+  opacity: 100%;
+}
+
+
+.abricot-enter
+.pomme {
+  transform:translateX(100px);
+  opacity: 0%;
+}
+
+.abricot-enter-active
+.pomme {
+  transition: 0.5s;
+  transform: translateX(0px);
+  opacity: 100%;
+}
+
+.abricot-enter-done
+.pomme {
+  transition: 2s;
+}
+
+.abricot-exit
+.pomme {
+  transform: translateX(0px);
+  opacity: 100%;
+}
+
+.abricot-exit-active
+.pomme {
+  transition: 0.5s;
+  transform:translateX(-100px);
+  opacity: 0%;
+}
 
   .basket-card {
     margin: 10px 16px;
