@@ -6,6 +6,7 @@ import { findObjectById } from '../../../../../../utils/array';
 import { useContext } from 'react';
 import OrderContext from '../../../../../context/OrderContext';
 import { checkIfProductIsClicked } from '../Menu/helper';
+import{TransitionGroup, CSSTransition} from "react-transition-group"
 
 export default function BasketProducts() {
 const {username, basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected, productSelected} = useContext(OrderContext)
@@ -18,22 +19,32 @@ handleDeleteBasketProduct(id, username)
 
   return (
     <BasketProductStyled>
-      {basket.map((basketProduct) => {
-        const menuProduct = findObjectById(basketProduct.id, menu )
-        return(
-    <div className='basket-card' key={basketProduct.id}>
-        <BasketCard  
-        {...menuProduct} 
-        imageSource={menuProduct.imageSource ? menuProduct.imageSource : IMAGE_COMING_SOON }
-        quantity={basketProduct.quantity}
-        onDelete={(event) => handleOnDelete(event, basketProduct.id)}
-        isClickable={isModeAdmin}
-        isSelected= {checkIfProductIsClicked(basketProduct.id, productSelected.id)}
-        onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null }
-        handleDeleteBasketProduct={handleDeleteBasketProduct}/>
-    </div> 
-    )})}</BasketProductStyled>
-  )
+    
+      <TransitionGroup>
+        {basket.map((basketProduct) => {
+          const menuProduct = findObjectById(basketProduct.id, menu )
+          return(
+      <CSSTransition 
+      appear={true}
+      classNames={"abrocit"}
+      key={basketProduct.id}
+      timeout={{enter: 500, exit: 500}}
+     >
+        <div className='basket-card' >
+            <BasketCard
+            {...menuProduct}
+            imageSource={menuProduct.imageSource ? menuProduct.imageSource : IMAGE_COMING_SOON }
+            quantity={basketProduct.quantity}
+            onDelete={(event) => handleOnDelete(event, basketProduct.id)}
+            isClickable={isModeAdmin}
+            isSelected= {checkIfProductIsClicked(basketProduct.id, productSelected.id)}
+            onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null }
+            handleDeleteBasketProduct={handleDeleteBasketProduct}/>
+        </div>
+      </CSSTransition>
+      )})}</TransitionGroup>
+    </BasketProductStyled>
+        )
 }
 
 const BasketProductStyled = styled.div`
