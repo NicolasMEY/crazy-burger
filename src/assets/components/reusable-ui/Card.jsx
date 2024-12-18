@@ -69,7 +69,7 @@ height: 330px;
   padding: 0;
   border: none;
   background: none;
-  animation: ${fadeInFromRight} ${theme.animation.speed.slow} ease-out;
+  animation: ${fadeInFromRight} ${theme.animation.speed.quick} ease-out;
   
 
   .icon {
