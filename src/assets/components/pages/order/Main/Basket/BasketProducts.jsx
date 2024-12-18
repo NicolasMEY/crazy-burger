@@ -26,11 +26,11 @@ handleDeleteBasketProduct(id, username)
           return(
       <CSSTransition 
       appear={true}
-      classNames={"abricot"}
+      classNames={"animation-basket"}
       key={basketProduct.id}
       timeout={{enter: 500, exit: 500}}
      >
-        <div className='basket-card' >
+        <div className='card-container' >
             <BasketCard
             {...menuProduct}
             imageSource={menuProduct.imageSource ? menuProduct.imageSource : IMAGE_COMING_SOON }
@@ -40,7 +40,7 @@ handleDeleteBasketProduct(id, username)
             isSelected= {checkIfProductIsClicked(basketProduct.id, productSelected.id)}
             onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null }
             handleDeleteBasketProduct={handleDeleteBasketProduct}
-            className={"pomme"}/>
+            className={"card"}/>
         </div>
       </CSSTransition>
       )})}</TransitionGroup>
@@ -54,52 +54,52 @@ const BasketProductStyled = styled.div`
   flex-direction: column;
   overflow-y: scroll;
 
-  .abricot-appear
-.pomme {
+  .animation-basket-appear
+.card {
   transform:translateX(100px);
   opacity: 0%;
 }
 
-.abricot-appear-active
-.pomme {
+.animation-basket-appear-active
+.card {
   transition: 0.5s;
   transform: translateX(0px);
   opacity: 100%;
 }
 
 
-.abricot-enter
-.pomme {
+.animation-basket-enter
+.card {
   transform:translateX(100px);
   opacity: 0%;
 }
 
-.abricot-enter-active
-.pomme {
+.animation-basket-enter-active
+.card {
   transition: 0.5s;
   transform: translateX(0px);
   opacity: 100%;
 }
 
-.abricot-enter-done
-.pomme {
+.animation-basket-enter-done
+.card {
   transition: 2s;
 }
 
-.abricot-exit
-.pomme {
+.animation-basket-exit
+.card {
   transform: translateX(0px);
   opacity: 100%;
 }
 
-.abricot-exit-active
-.pomme {
+.animation-basket-exit-active
+.card {
   transition: 0.5s;
   transform:translateX(-100px);
   opacity: 0%;
 }
 
-  .basket-card {
+  .card-container {
     margin: 10px 16px;
     height: 86px;
     box-sizing: border-box;
