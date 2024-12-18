@@ -73,7 +73,7 @@ const family = {
 const animation = {
   speed: {
     quick: "300ms",
-    slow: "500",
+    slow: "500ms",
   },
 };
 
