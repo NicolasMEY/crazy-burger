@@ -1,10 +1,12 @@
-import styled from "styled-components";
+import styled  from "styled-components";
 import { theme } from "../../../../theme";
 import Menu from "./Menu/Menu";
 import Admin from "./Admin/Admin";
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import Basket from "./Basket/Basket"
+import {TransitionGroup, CSSTransition} from "react-transition-group"
+import { adminAnimation } from "../../../../theme/animation";
 
 function Main() {
 
@@ -15,7 +17,17 @@ const {isModeAdmin, setIsModeAdmin} = useContext(OrderContext)
             <Basket />
             <div className="menu-and-admin">
                 <Menu/>
-                {isModeAdmin && <Admin/>  }
+                {isModeAdmin && 
+                <TransitionGroup className="transition-group">
+                    <CSSTransition
+                    appear={true} classNames="admin" timeout={500}>
+                        <Admin/>
+                    </CSSTransition> 
+                </TransitionGroup> 
+                
+                }
+
+
                 {/* Equivalent =  {isModeAdmin ? <Admin/> : null } */}
             </div>
         </MainStyled>
@@ -23,6 +35,8 @@ const {isModeAdmin, setIsModeAdmin} = useContext(OrderContext)
 }
 
 export default Main;
+
+
 
 const MainStyled = styled.div`
     background-color: ${theme.colors.background_white};
@@ -50,6 +64,8 @@ background-color: purple;
         /* border-bottom-left-radius: ${theme.borderRadius.extraRound}; */
     border-bottom-right-radius:${theme.borderRadius.extraRound};
     } 
+
+${adminAnimation}
 `;
 
 
