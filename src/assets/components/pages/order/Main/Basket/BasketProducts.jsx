@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import OrderContext from '../../../../../context/OrderContext';
 import { checkIfProductIsClicked } from '../Menu/helper';
 import{TransitionGroup, CSSTransition} from "react-transition-group"
+import { basketAnimation } from '../../../../../theme/animation';
 
 export default function BasketProducts() {
 const {username, basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected, productSelected} = useContext(OrderContext)
@@ -28,7 +29,7 @@ handleDeleteBasketProduct(id, username)
       appear={true}
       classNames={"animation-basket"}
       key={basketProduct.id}
-      timeout={{enter: 500, exit: 500}}
+      timeout={{enter: 300, exit: 300}}
      >
         <div className='card-container' >
             <BasketCard
@@ -46,7 +47,7 @@ handleDeleteBasketProduct(id, username)
       )})}</TransitionGroup>
     </BasketProductStyled>
         )
-}
+} 
 
 const BasketProductStyled = styled.div`
   flex: 1;
@@ -54,51 +55,7 @@ const BasketProductStyled = styled.div`
   flex-direction: column;
   overflow-y: scroll;
 
-  .animation-basket-appear
-.card {
-  transform:translateX(100px);
-  opacity: 0%;
-}
-
-.animation-basket-appear-active
-.card {
-  transition: 0.5s;
-  transform: translateX(0px);
-  opacity: 100%;
-}
-
-
-.animation-basket-enter
-.card {
-  transform:translateX(100px);
-  opacity: 0%;
-}
-
-.animation-basket-enter-active
-.card {
-  transition: 0.5s;
-  transform: translateX(0px);
-  opacity: 100%;
-}
-
-.animation-basket-enter-done
-.card {
-  transition: 2s;
-}
-
-.animation-basket-exit
-.card {
-  transform: translateX(0px);
-  opacity: 100%;
-}
-
-.animation-basket-exit-active
-.card {
-  transition: 0.5s;
-  transform:translateX(-100px);
-  opacity: 0%;
-}
-
+  
   .card-container {
     margin: 10px 16px;
     height: 86px;
@@ -110,4 +67,5 @@ const BasketProductStyled = styled.div`
         margin-bottom: 20px;
     } */
   }
+  ${basketAnimation}
 `;
