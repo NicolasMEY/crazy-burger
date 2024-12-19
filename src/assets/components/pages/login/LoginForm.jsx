@@ -17,9 +17,11 @@ const LoginForm = () => {
    
   const handleSubmit = async (e) => {
     e.preventDefault();
-    authenticateUser(username)
+    
+     const userReceived = await authenticateUser(username)
+
       setUsername("");
-      navigate(`order/${username}`)
+      navigate(`order/${userReceived.username}`)
     }
   
   const handleChange = (event) => { 

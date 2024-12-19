@@ -15,17 +15,19 @@ export const getUser = async (idUser) => {
 };
 
 // Création du user
-export const createUser = (userId) => {
+export const createUser = async (userId) => {
   const docRef = doc(db, "users", userId);
-  const newDoc = {
+  const newUserToCreate = {
     username: userId,
     menu: fakeMenu.SMALL,
   };
-  setDoc(docRef, newDoc);
+  await setDoc(docRef, newUserToCreate);
+
+  return newUserToCreate;
 };
 
 // docRef = cachette
-//newDoc = nourriture
+//newUserToCreate = nourriture
 
 export const authenticateUser = async (userId) => {
   // 1. Récupère un existingUser
@@ -33,6 +35,7 @@ export const authenticateUser = async (userId) => {
 
   // 2. Sinon tu créer un newUser
   if (existingUser === undefined) {
-    createUser(userId);
+    return await createUser(userId);
   }
+  return existingUser;
 };
