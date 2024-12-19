@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import BasketCard from '../BasketCard';
+import BasketCard from './BasketCard';
 import { IMAGE_COMING_SOON } from '../../../../../../enums/product';
 import { findObjectById } from '../../../../../../../utils/array';
 import { useContext } from 'react';
