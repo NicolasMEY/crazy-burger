@@ -70,6 +70,13 @@ const family = {
   stylish: `"Amatic SC", cursive`,
 };
 
+const animation = {
+  speed: {
+    quick: "300ms",
+    slow: "500ms",
+  },
+};
+
 export const theme = {
   colors,
   fonts,
@@ -79,6 +86,7 @@ export const theme = {
   weights,
   family,
   spacing,
+  animation,
 };
 
 {

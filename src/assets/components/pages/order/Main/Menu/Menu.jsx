@@ -10,6 +10,8 @@ import { checkIfProductIsClicked } from "./helper";
 import {EMPTY_PRODUCT, IMAGE_COMING_SOON} from "../../../../../enums/product.jsx"
 import { isEmpty } from "../../../../../../utils/array.jsx";
 import Loader from "./Loader.jsx";
+import {TransitionGroup, CSSTransition} from "react-transition-group"
+import { menuAnimation } from "../../../../../theme/animation.js";
 
 export default function Menu() {
 const {username, menu, isModeAdmin, handleDelete, resetMenu, productSelected, setproductSelected, handleAddToBasket, handleDeleteBasketProduct, handleProductSelected
@@ -42,23 +44,25 @@ if (isEmpty (menu)) {
   }
 
   return (
-    <MenuStyled className="menu" >
+    <TransitionGroup component={MenuStyled} className="menu" >
       {menu.map(({id, title, imageSource, price} ) => {
         return (
-        <Card 
-        key={id} 
-        title={title} 
-        imageSource={imageSource ? imageSource : IMAGE_COMING_SOON } leftDescription={formatPrice(price)}
-        hasDeleteButton={isModeAdmin}
-        onDelete={(event) => handleCardDelete(event, id)}
-        onClick={isModeAdmin ? () => handleProductSelected(id) : null }
-        isHoverable={isModeAdmin}
-        isSelected= {checkIfProductIsClicked(id, productSelected.id)}
-        onAdd={(event) => handleAddButton(event, id)}
-        />
+        <CSSTransition classNames={"menu-animation"} key={id} timeout={300}>
+          <Card
+          key={id}
+          title={title}
+          imageSource={imageSource ? imageSource : IMAGE_COMING_SOON } leftDescription={formatPrice(price)}
+          hasDeleteButton={isModeAdmin}
+          onDelete={(event) => handleCardDelete(event, id)}
+          onClick={isModeAdmin ? () => handleProductSelected(id) : null }
+          isHoverable={isModeAdmin}
+          isSelected= {checkIfProductIsClicked(id, productSelected.id)}
+          onAdd={(event) => handleAddButton(event, id)}
+          />
+        </CSSTransition>
         )
       })}
-    </MenuStyled>
+    </TransitionGroup>
   )
 }
 
@@ -72,4 +76,6 @@ grid-template-columns: repeat(3, 1fr) ;
   padding: 50px 50px 150px;
   justify-items: center;
   overflow-y: scroll;
+
+  ${menuAnimation}
 `;

@@ -4,17 +4,17 @@ import Header from '../../../../reusable-ui/Header';
 import { theme } from '../../../../../theme';
 
 
-export default function Footer() {
+export default function BasketFooter() {
   return (
     <Header>
-      <FooterStyled>
+      <BasketFooterStyled>
         <span>Codé avec ❤️ et React.JS</span>
-      </FooterStyled>
+      </BasketFooterStyled>
     </Header>
   );
 }
 
-const FooterStyled = styled.div`
+const BasketFooterStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
