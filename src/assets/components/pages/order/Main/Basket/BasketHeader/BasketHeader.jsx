@@ -5,7 +5,8 @@ import { theme } from "../../../../../../theme/index.js";
 import Header from "../../../../../reusable-ui/Header.jsx";
 import { formatPrice } from "../../../../../../../utils/maths.js";
 import { calculateSumToPay } from "./helper.js";
-import CasinoEffect from "../../../../../reusable-ui/casinoEffect.jsx";
+import CasinoEffect from "../../../../../reusable-ui/CasinoEffect.jsx";
+
 
 export default function BasketHeader() {
   const {basket, menu} = useContext(OrderContext)
