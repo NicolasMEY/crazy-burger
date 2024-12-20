@@ -40,15 +40,27 @@ const FormStyled = styled.form`
   gap: 8px 20px;
 
   .input-fields {
-    grid-area: 1 / 2 / 4 / 3 ;
+    grid-area: 1 / 2 / -2 / 3 ;
+
     display: grid;
     grid-row-gap: 8px;
-    /* grid-template-columns: 1fr;
-    grid-template-rows:repeat(3, 1fr) ; */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows:repeat(3, 1fr) ; 
+
+    .title {
+      grid-area: 1/1/2/4;
+    }
+    .image-source {
+      grid-area: 2/1/3/4;
+    }
+    .price {
+      background-color: red;
+      grid-area: 3/1/4/2 ;
+    }
   }
   
     .form-footer {
-    grid-area: 4 / 2 / 5 / 3 ;
+    grid-area: 4 / -2 / -1 / -1 ;
     display: flex;
     align-items: center;
     position: relative;
