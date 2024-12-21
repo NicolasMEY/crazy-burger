@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import TextInput from "../../../../../reusable-ui/TextInput"
+import TextInput from "../../../../../../reusable-ui/TextInput"
 import ImagePreview from "./ImagePreview";
 import { Inputs } from "./Inputs";
 
