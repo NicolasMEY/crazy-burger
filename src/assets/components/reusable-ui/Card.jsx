@@ -2,9 +2,9 @@ import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 import Button from "./Button";
 import {TiDelete}  from "react-icons/ti"
-import { fadeInFromRight } from "../../theme/animation";
+import { fadeInFromRight, fadeInFromTop } from "../../theme/animation";
 
-export default function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable, isSelected, onAdd}) {
+export default function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable, isSelected, onAdd,overlapImageSource, isOverlapImageVisible}) {
 
   return (
     <CardStyled className="produit" onClick={onClick} 
@@ -17,8 +17,14 @@ export default function Card({title, imageSource, leftDescription, hasDeleteButt
         </button>)}
 
             <div className="image">
-              <img src={imageSource} alt={title} />
-              </div>
+              {isOverlapImageVisible && ( <div className="overlap">
+                <div className="transparent-layer"></div>
+                <img className="over-lap-image" src={overlapImageSource} alt="overlap"/>
+                </div> 
+                )}
+                <img className="product" src={imageSource} alt={title} />
+                </div>
+
             <div className="text-info">
               <div className="title">{title}
               </div>
@@ -85,18 +91,42 @@ height: 330px;
     color: ${theme.colors.primary};
   }
 }
-  .image {
-    width: 100%;
-    height: auto ;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-  }
+.image {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      /* position: relative; */
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .overlap {
+        .overlap-image {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 80%;
+          height: 100%;
+          z-index: 1;
+          animation: ${fadeInFromTop} 500ms;
+          border-radius: ${theme.borderRadius.extraRound};
+        }
+
+        .transparent-layer {
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 70%;
+          background: snow;
+          z-index: 1;
+          border-radius: ${theme.borderRadius.extraRound};
+        }
+      
+  }}
+
 
   .text-info {
     display: grid;
