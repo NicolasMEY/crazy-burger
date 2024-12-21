@@ -26,10 +26,15 @@ const inputSelects = getSelectInputConfig(product)
     onFocus={onFocus}
     onBlur={onBlur}
     ref={ref && input.name === "title" ? ref : null}
-    />))}
+    />
+    ))}
+    
     {inputSelects.map((inputSelect) => (<SelectInput 
     {...inputSelect}
-    />)) }
+    key={inputSelect.id}
+    onChange={onChange}
+    />
+    )) }
     </div>
     <div className="form-footer">{children}</div>
     </FormStyled>

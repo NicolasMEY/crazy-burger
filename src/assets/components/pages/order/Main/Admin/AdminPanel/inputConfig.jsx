@@ -39,7 +39,7 @@ export const getInputTextsConfig = (newProduct) => [
   {
     id:"3",
     name : "isAvailable",  
-    value:newProduct.isAvailable, 
+    value: newProduct.isAvailable, 
     // Icon:<MdOutlineEuro/>,
     options: isAvailableOptions,
     className: "is-available",
@@ -48,7 +48,7 @@ export const getInputTextsConfig = (newProduct) => [
 {
     id:"4",
     name : "isPublicised",  
-    value:newProduct.isPublicised, 
+    value: newProduct.isPublicised, 
     // Icon:<MdOutlineEuro/>,
     options: isPublicisedOptions,
     className: "is-publicised",

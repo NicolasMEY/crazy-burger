@@ -16,6 +16,9 @@ export default function EditForm() {
   const handleChange = (event) => { 
     const{name, value} = event.target
 
+console.log("name", name);
+console.log("value", value);
+
    const productBeingUpdated =  {
     ...productSelected,
     [name] : value,
