@@ -17,11 +17,7 @@ export default function Card({
   overlapImageSource,
   isOverlapImageVisible,
 }) {
-  // state (vide)
 
-  // comportements (vide)
-
-  // affichage
   return (
     <CardStyled
       className="produit"
@@ -100,7 +96,6 @@ const CardStyled = styled.div`
       animation: ${fadeInFromRight} ${theme.animation.speed.slow} ease-out;
 
       .icon {
-        /* border: 1px solid blue; */
         height: 100%;
         width: 100%;
       }
@@ -114,7 +109,6 @@ const CardStyled = styled.div`
     }
 
     .image {
-      /* border: 2px solid green; */
       margin-top: 30px;
       margin-bottom: 20px;
       /* position: relative; */
@@ -126,7 +120,6 @@ const CardStyled = styled.div`
 
       .overlap {
         .overlap-image {
-          /* border: 1px solid red; */
           position: absolute;
           top: 0;
           bottom: 0;
@@ -195,6 +188,7 @@ const CardStyled = styled.div`
 
           .primary-button {
             font-size: ${theme.fonts.XS};
+            /* cursor: pointer; */
             padding: 12px;
           }
         }
@@ -206,8 +200,10 @@ const CardStyled = styled.div`
 `
 
 const hoverableStyle = css`
-  :hover {
-    box-shadow: ${theme.shadows.orangeHighlight};
+  &:hover {
+    transform: scale(1.05);
+  transition: ease-out 0.4s;
+    box-shadow: ${theme.shadows.orangeHightLight};
     cursor: pointer;
   }
 `
