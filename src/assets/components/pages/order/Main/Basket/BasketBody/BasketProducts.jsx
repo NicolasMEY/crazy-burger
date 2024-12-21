@@ -10,6 +10,7 @@ import{TransitionGroup, CSSTransition} from "react-transition-group"
 import { basketAnimation } from '../../../../../../theme/animation';
 import { formatPrice } from '../../../../../../../utils/maths';
 import { convertStringToBoolean } from '../../../../../../../utils/string';
+import Sticker from '../../../../../reusable-ui/Sticker';
 
 export default function BasketProducts() {
 const {username, basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected, productSelected} = useContext(OrderContext)
@@ -34,6 +35,8 @@ handleDeleteBasketProduct(id, username)
       timeout={{enter: 300, exit: 300}}
      >
         <div className='card-container' >
+{convertStringToBoolean(menuProduct.isPublicised) && <Sticker className="badge-new"/> }
+
             <BasketCard
             {...menuProduct}
             imageSource={menuProduct.imageSource ? menuProduct.imageSource : IMAGE_COMING_SOON }
@@ -63,12 +66,25 @@ const BasketProductStyled = styled.div`
     margin: 10px 16px;
     height: 86px;
     box-sizing: border-box;
+    position: relative;
     /* :first-child{
         margin-top: 20px;
     }
     :last-child {
         margin-bottom: 20px;
     } */
+
+    .badge-new {
+      position: absolute;
+      z-index: 1;
+      bottom: 10%;
+      left: 21%;
+      transform: translateY(-21%);
+      transform: translateX(-5%);
+    }
+
+
+
   }
   ${basketAnimation}
 `;
