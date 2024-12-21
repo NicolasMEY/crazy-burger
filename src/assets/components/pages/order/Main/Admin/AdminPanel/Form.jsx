@@ -33,6 +33,8 @@ const inputSelects = getSelectInputConfig(product)
     {...inputSelect}
     key={inputSelect.id}
     onChange={onChange}
+    onFocus={onFocus}
+    onBlur={onBlur}
     />
     )) }
     </div>

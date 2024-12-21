@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 
-export default function SelectInput({ value, options, name, className, id, onChange}) {
+export default function SelectInput({ value, options, name, className, id, onChange, onFocus, onBlur}) {
   return (
     <SelectInputStyled 
     value={value} 
@@ -9,6 +9,8 @@ export default function SelectInput({ value, options, name, className, id, onCha
     className={className} 
     id={id}
     onChange={onChange}
+    onFocus={onFocus}
+    onBlur={onBlur}
     >
     {options.map(({value, label}) => (
       <option key={label} value={value}>{label}</option>
