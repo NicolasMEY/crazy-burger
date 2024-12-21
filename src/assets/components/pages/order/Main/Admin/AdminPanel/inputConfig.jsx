@@ -1,6 +1,9 @@
 import { FaHamburger } from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { MdOutlineEuro } from "react-icons/md";
+import { FiPackage } from "react-icons/fi";
+import { GoMegaphone } from "react-icons/go";
+
 import { isAvailableOptions, isPublicisedOptions } from "../../../../../../enums/select";
 
 export const getInputTextsConfig = (newProduct) => [
@@ -40,7 +43,7 @@ export const getInputTextsConfig = (newProduct) => [
     id:"3",
     name : "isAvailable",  
     value: newProduct.isAvailable, 
-    // Icon:<MdOutlineEuro/>,
+    Icon:<FiPackage/>,
     options: isAvailableOptions,
     className: "is-available",
 
@@ -49,7 +52,7 @@ export const getInputTextsConfig = (newProduct) => [
     id:"4",
     name : "isPublicised",  
     value: newProduct.isPublicised, 
-    // Icon:<MdOutlineEuro/>,
+    Icon:<GoMegaphone/>,
     options: isPublicisedOptions,
     className: "is-publicised",
 },
