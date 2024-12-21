@@ -135,7 +135,7 @@ const LARGE = [
   },
   {
     id: "8",
-    imageSource: "/images/fries3.png",
+    imageSource: "/imagesCards/fries3.png",
     title: "New York Fries",
     price: 3.1678,
     quantity: 0,

@@ -5,7 +5,7 @@ import { syncBothMenus } from "../../api/product";
 
 
 export const useMenu = () => { 
-const [menu, setMenu] = useState(fakeMenu.MEDIUM)
+const [menu, setMenu] = useState(fakeMenu.LARGE)
 
 const handleAdd = (newProduct, username) => {
     const menuCopy = deepClone(menu);
@@ -37,8 +37,8 @@ setMenu(menuCopy)
 syncBothMenus(username, menuCopy)
 }
 
-const resetMenu = (username) => { setMenu(fakeMenu.MEDIUM)
-syncBothMenus(username, fakeMenu.MEDIUM) } 
+const resetMenu = (username) => { setMenu(fakeMenu.LARGE)
+syncBothMenus(username, fakeMenu.LARGE) } 
 
 
 return {menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu}
