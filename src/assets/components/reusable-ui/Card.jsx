@@ -1,97 +1,120 @@
-import styled, { css } from "styled-components";
-import { theme } from "../../theme";
-import Button from "./Button";
-import {TiDelete}  from "react-icons/ti"
-import { fadeInFromRight, fadeInFromTop } from "../../theme/animation";
+import styled, { css } from "styled-components"
+import { theme } from "../../theme"
+import Button from "./Button"
+import { TiDelete } from "react-icons/ti"
+import { fadeInFromRight, fadeInFromTop } from "../../theme/animation"
 
-export default function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable, isSelected, onAdd,overlapImageSource, isOverlapImageVisible}) {
+export default function Card({
+  title,
+  imageSource,
+  leftDescription,
+  hasDeleteButton,
+  onDelete,
+  onClick,
+  isHoverable,
+  isSelected,
+  onAdd,
+  overlapImageSource,
+  isOverlapImageVisible,
+}) {
+  // state (vide)
 
+  // comportements (vide)
+
+  // affichage
   return (
-    <CardStyled className="produit" onClick={onClick} 
-    isHoverable={isHoverable} isSelected={isSelected} >
-
-      <div className="card" >
+    <CardStyled
+      className="produit"
+      onClick={onClick}
+      isHoverable={isHoverable}
+      isSelected={isSelected}
+    >
+      <div className="card">
         {hasDeleteButton && (
-        <button className="delete-button" aria-label="delete-button" onClick={onDelete}
-        ><TiDelete className="icon"/>
-        </button>)}
+          <button className="delete-button" aria-label="delete-button" onClick={onDelete}>
+            <TiDelete className="icon" />
+          </button>
+        )}
 
-            <div className="image">
-              {isOverlapImageVisible && ( <div className="overlap">
-                <div className="transparent-layer"></div>
-                <img className="over-lap-image" src={overlapImageSource} alt="overlap"/>
-                </div> 
-                )}
-                <img className="product" src={imageSource} alt={title} />
-                </div>
+        <div className="image">
+          {isOverlapImageVisible && (
+            <div className="overlap">
+              <div className="transparent-layer"></div>
+              <img className="overlap-image" src={overlapImageSource} alt="overlap" />
+            </div>
+          )}
+          <img className="product" src={imageSource} alt={title} />
+        </div>
 
-            <div className="text-info">
-              <div className="title">{title}
-              </div>
-              <div className="description">
-                <div className="left-description">{leftDescription}</div>
-              <div className="right-description">
-                <Button 
+        <div className="text-info">
+          <div className="title">{title}</div>
+          <div className="description">
+            <div className="left-description">{leftDescription}</div>
+            <div className="right-description">
+              <Button
                 className="primary-button"
                 label={"Ajouter"}
-                onClick={onAdd}/>
-                </div>
-                </div>
+                onClick={onAdd}
+                disabled={isOverlapImageVisible}
+              />
             </div>
+          </div>
+        </div>
       </div>
-        </CardStyled>
+    </CardStyled>
   )
 }
 
 const CardStyled = styled.div`
-${({isHoverable}) => isHoverable && hoverableStyle }
-border-radius: ${theme.borderRadius.extraRound};
-height: 330px;
-
+  ${({ isHoverable }) => isHoverable && hoverableStyle}
+  border-radius: ${theme.borderRadius.extraRound};
+  /* border: 1px solid red; */
+  height: 330px;
 
   .card {
-  background-color: ${theme.colors.white};
-  box-sizing: border-box;
-  width: 240px;
-  height: 330px;
-  display: grid;
-  grid-template-rows:65% 1fr ;
-  padding: 20px;
-  padding-bottom: 10px;
-  box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
-  border-radius: ${theme.borderRadius.extraRound};
-  position: relative; // pour etre le référent pour le delete-button
+    background: ${theme.colors.white};
+    box-sizing: border-box;
+    width: 240px;
+    height: 330px;
+    display: grid;
+    grid-template-rows: 65% 1fr;
+    padding: 20px;
+    padding-bottom: 10px;
+    box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+    border-radius: ${theme.borderRadius.extraRound};
+    position: relative;
 
-.delete-button {
-  border: 1px solid red;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  color: ${theme.colors.primary};
-  z-index: 2;
-  padding: 0;
-  border: none;
-  background: none;
-  animation: ${fadeInFromRight} ${theme.animation.speed.quick} ease-out;
-  
+    .delete-button {
+      border: 1px solid red;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      color: ${theme.colors.primary};
+      z-index: 2;
+      padding: 0;
+      border: none;
+      background: none;
+      animation: ${fadeInFromRight} ${theme.animation.speed.slow} ease-out;
 
-  .icon {
-    height: 100%;
-    width: 100%;
-  }
+      .icon {
+        /* border: 1px solid blue; */
+        height: 100%;
+        width: 100%;
+      }
 
-  :hover {
-    color: ${theme.colors.red};
-  }
+      :hover {
+        color: ${theme.colors.red};
+      }
+      :active {
+        color: ${theme.colors.primary};
+      }
+    }
 
-  :active{
-    color: ${theme.colors.primary};
-  }
-}
-.image {
+    .image {
+      /* border: 2px solid green; */
       margin-top: 30px;
       margin-bottom: 20px;
       /* position: relative; */
@@ -103,6 +126,7 @@ height: 330px;
 
       .overlap {
         .overlap-image {
+          /* border: 1px solid red; */
           position: absolute;
           top: 0;
           bottom: 0;
@@ -124,75 +148,71 @@ height: 330px;
           z-index: 1;
           border-radius: ${theme.borderRadius.extraRound};
         }
-      
-  }}
-
-
-  .text-info {
-    display: grid;
-    grid-template-rows: 30% 70%;
-    padding: 5px;
-
-    .title {
-      margin: auto 0;
-      font-size: ${theme.fonts.P4};
-      position: relative;
-      bottom: 10px;
-      font-weight: ${theme.weights.bold};
-      color: ${theme.colors.dark};
-      text-align: left;
-      white-space: nowrap; // Empêche le texte de se diviser en plusieurs lignes.
-      overflow: hidden;
-      width: 100%;
-      text-overflow: ellipsis; // Rajoute les ...
-      font-family: "Amatic SC", cursive;
+      }
     }
-    
-    .description {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
 
-       .left-description {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        font-weight: ${theme.weights.medium};
+    .text-info {
+      display: grid;
+      grid-template-rows: 30% 70%;
+      padding: 5px;
+
+      .title {
+        margin: auto 0;
+        font-size: ${theme.fonts.P4};
+        position: relative;
+        bottom: 10px;
+        font-weight: ${theme.weights.bold};
+        color: ${theme.colors.dark};
+        text-align: left;
         white-space: nowrap;
         overflow: hidden;
+        width: 100%;
         text-overflow: ellipsis;
-        font-weight: ${theme.weights.medium};
-        color: ${theme.colors.primary};
+        font-family: "Amatic SC", cursive;
       }
-      
-      .right-description {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        font-size: ${theme.fonts.P1};
 
-        .primary-button {
-          font-size: ${theme.fonts.XS};
-          cursor: pointer;
-          padding: 12px;
+      .description {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .left-description {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          font-weight: ${theme.weights.medium};
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-weight: ${theme.weights.medium};
+          color: ${theme.colors.primary};
+        }
+
+        .right-description {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          font-size: ${theme.fonts.P1};
+
+          .primary-button {
+            font-size: ${theme.fonts.XS};
+            padding: 12px;
+          }
         }
       }
     }
+
+    ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyle}
   }
-  ${({isHoverable, isSelected}) => isHoverable && isSelected && selectedStyle }
-}
-  `
-
-
-  const hoverableStyle = css`
-&:hover {
-  transform: scale(1.05);
-  transition: ease-out 0.4s;
-  box-shadow: ${theme.shadows.orangeHightLight};
-  cursor: pointer;
-}
 `
-  
-  const selectedStyle = css`
+
+const hoverableStyle = css`
+  :hover {
+    box-shadow: ${theme.shadows.orangeHighlight};
+    cursor: pointer;
+  }
+`
+
+const selectedStyle = css`
   background: ${theme.colors.primary};
   .primary-button {
     color: ${theme.colors.primary};
@@ -247,6 +267,6 @@ height: 330px;
       }
     }
   }
-  `
+`
 
 

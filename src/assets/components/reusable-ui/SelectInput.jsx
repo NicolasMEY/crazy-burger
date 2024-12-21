@@ -17,8 +17,8 @@ export default function SelectInput({ value, options, name, className, id, onCha
     onFocus={onFocus}
     onBlur={onBlur}>
     
-    {options.map(({value, label}) => (
-      <option key={label} value={value}>{label}</option>
+    {options.map(({optionValue, label}) => (
+      <option key={label} value={optionValue}>{label}</option>
    
       ))}
          </select>
