@@ -1,13 +1,15 @@
 import React from 'react'
 import styled from 'styled-components';
 import BasketCard from './BasketCard';
-import { IMAGE_COMING_SOON } from '../../../../../../enums/product';
+import { BASKET_MESSAGE, IMAGE_COMING_SOON } from '../../../../../../enums/product';
 import { findObjectById } from '../../../../../../../utils/array';
 import { useContext } from 'react';
 import OrderContext from '../../../../../../context/OrderContext';
 import { checkIfProductIsClicked } from '../../Menu/helper';
 import{TransitionGroup, CSSTransition} from "react-transition-group"
 import { basketAnimation } from '../../../../../../theme/animation';
+import { formatPrice } from '../../../../../../../utils/maths';
+import { convertStringToBoolean } from '../../../../../../../utils/string';
 
 export default function BasketProducts() {
 const {username, basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected, productSelected} = useContext(OrderContext)
@@ -41,7 +43,8 @@ handleDeleteBasketProduct(id, username)
             isSelected= {checkIfProductIsClicked(basketProduct.id, productSelected.id)}
             onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null }
             handleDeleteBasketProduct={handleDeleteBasketProduct}
-            className={"card"}/>
+            className={"card"}
+            price={convertStringToBoolean(menuProduct.isAvailable) ? formatPrice(menuProduct.price) : BASKET_MESSAGE.NOT_AVAILABLE}/>
         </div>
       </CSSTransition>
       )})}</TransitionGroup>
