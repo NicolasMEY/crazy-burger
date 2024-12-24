@@ -1,10 +1,9 @@
 // Données codées en dures et qui ne sont pas censées changer, contrairement à un state
-
+import AddForm from "./AdminPanel/AddForm/AddForm.jsx"
 import {AiOutlinePlus} from "react-icons/ai"
 import {MdModeEditOutline} from "react-icons/md"
-import AddForm from "./AdminPanel/AddForm"
-import EditForm from "./AdminPanel/EditForm"
-import HintMessage from "./AdminPanel/HintMessage"
+import EditForm from "./AdminPanel/EditForm/EditForm.jsx"
+import HintMessage from "./AdminPanel/EditForm/HintMessage.jsx"
 
 // import {BiSun} from "react-icons/bi"
 
