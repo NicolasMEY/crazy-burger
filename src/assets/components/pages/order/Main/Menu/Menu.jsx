@@ -52,11 +52,9 @@ if (isEmpty (menu)) {
       {menu.map(({id, title, imageSource, price, isAvailable, isPublicised} ) => {
         return (
           
-        <div className={cardContainerClassName}>
-
-          {convertStringToBoolean(isPublicised) && <RibbonAnimated/>}
-
           <CSSTransition classNames={"menu-animation"} key={id} timeout={300}>
+             <div className={cardContainerClassName} key={id}> 
+          {convertStringToBoolean(isPublicised) && <RibbonAnimated />}
             <Card
             key={id}
             title={title}
@@ -69,8 +67,8 @@ if (isEmpty (menu)) {
             onAdd={(event) => handleAddButton(event, id)}
             overlapImageSource={IMAGE_NO_STOCK} isOverlapImageVisible={convertStringToBoolean (isAvailable) === false}
             />
-          </CSSTransition>
         </div>
+          </CSSTransition>
         )
       })}
     </TransitionGroup>

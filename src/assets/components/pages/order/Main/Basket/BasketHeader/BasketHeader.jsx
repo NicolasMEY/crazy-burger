@@ -16,8 +16,8 @@ export default function BasketHeader() {
   return (
     <Header>
     <BasketHeaderStyled>
-    <span className="total">BasketHeader</span> 
-    <CasinoEffect count={formatPrice (sumToPay)}/>
+    <span className="total">Total</span> 
+    <CasinoEffect count={formatPrice(sumToPay)}/>
     </BasketHeaderStyled>
     </Header>
   )
