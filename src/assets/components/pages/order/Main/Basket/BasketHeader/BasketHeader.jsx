@@ -2,7 +2,7 @@ import {useContext} from "react"
 import OrderContext from "../../../../../../context/OrderContext.jsx"
 import styled from "styled-components";
 import { theme } from "../../../../../../theme/index.js";
-import Header from "../../../../../reusable-ui/Header.jsx";
+import Header from "../../../../../reusable-ui/Header.tsx";
 import { formatPrice } from "../../../../../../../utils/maths.js";
 import { calculateSumToPay } from "./helper.js";
 import CasinoEffect from "../../../../../reusable-ui/CasinoEffect.jsx";
