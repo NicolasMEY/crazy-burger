@@ -5,7 +5,7 @@ import { theme } from "../../../../../../theme/index.js";
 import Header from "../../../../../reusable-ui/Header.tsx";
 import { formatPrice } from "../../../../../../../utils/maths.js";
 import { calculateSumToPay } from "./helper.js";
-import CasinoEffect from "../../../../../reusable-ui/CasinoEffect.jsx";
+import CasinoEffect from "../../../../../reusable-ui/CasinoEffect.tsx";
 
 
 export default function BasketHeader() {

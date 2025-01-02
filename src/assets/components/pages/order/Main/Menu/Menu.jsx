@@ -11,7 +11,7 @@ import {EMPTY_PRODUCT, IMAGE_COMING_SOON, IMAGE_NO_STOCK} from "../../../../../e
 import { isEmpty } from "../../../../../../utils/array.jsx";
 import Loader from "./Loader.jsx";
 import {TransitionGroup, CSSTransition} from "react-transition-group"
-import { menuAnimation } from "../../../../../theme/animation.js";
+import { menuAnimation } from "../../../../../theme/animation";
 import { convertStringToBoolean } from "../../../../../../utils/string.js";
 import RibbonAnimated, { ribbonAnimation } from "./RibbonAnimated.jsx";
 
