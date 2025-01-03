@@ -1,10 +1,21 @@
-import React from "react";
+import React, { ComponentPropsWithRef, JSX } from "react";
 import styled, { css } from "styled-components";
-import { theme } from "../../theme";
+import { theme } from "@/assets/theme/theme"
+
+type TextInputVersion =  "normal" | "minimalist"
 
 
- const TextInput = React.forwardRef(({
-    onChange, Icon, className, version = "normal", ...extraProps}, ref) =>  {
+type TextInputProps =  {
+  // onChange? : React.ChangeEventHandler<HTMLInputElement>,
+  Icon : JSX.Element, 
+  // className? : string, 
+  version? : TextInputVersion,
+  // ...extraProps : unknown
+} & ComponentPropsWithRef<"input">
+
+
+ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(({
+    onChange, Icon, className, version = "normal", ...extraProps} : TextInputProps, ref) =>  {
   return (
     <TextInputStyled className={className} version={version} >
          <div className="icon">{Icon && Icon}</div>
@@ -17,12 +28,12 @@ import { theme } from "../../theme";
   )
 })
 
+type TextInputStyledProps = { version : TextInputVersion}
 
 export default  TextInput
 
 
-
-const TextInputStyled = styled.div`
+const TextInputStyled = styled.div<TextInputStyledProps>`
     border-radius: ${theme.borderRadius.round};
     display: flex;
     align-items: center;

@@ -1,9 +1,12 @@
-import React from 'react'
 import styled from 'styled-components';
 import { TransitionGroup, CSSTransition} from "react-transition-group"
 
+type casinoEffectProps = {
+  count : string,
+  className? : string,
+}
 
-export default function CasinoEffect({count,className}) {
+export default function CasinoEffect({count,className} : casinoEffectProps) {
   return (
 
         <TransitionGroup 

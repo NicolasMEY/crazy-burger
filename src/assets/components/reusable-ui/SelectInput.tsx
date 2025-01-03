@@ -1,8 +1,18 @@
-import React from 'react'
+import { ComponentProps, JSX } from 'react'
 import styled from 'styled-components';
-import { theme } from '../../theme';
+import { theme } from '@/assets/theme/theme' 
 
-export default function SelectInput({ value, options, name, className, id, onChange, Icon, onFocus, onBlur}) {
+type Option = {
+  optionValue: string | number | readonly string[] | undefined, 
+  label: string
+}
+
+type SelecInputProps = {
+  options : Option[],
+  Icon : JSX.Element,
+} & ComponentProps<"select">
+
+export default function SelectInput({ value, options, name, className, id, onChange, Icon, onFocus, onBlur} : SelecInputProps) {
   return (
     <SelectInputStyled className={className} > 
 
@@ -11,7 +21,6 @@ export default function SelectInput({ value, options, name, className, id, onCha
     <select 
     value={value} 
     name={name} 
-    
     id={id}
     onChange={onChange}
     onFocus={onFocus}
@@ -19,7 +28,6 @@ export default function SelectInput({ value, options, name, className, id, onCha
     
     {options.map(({optionValue, label}) => (
       <option key={label} value={optionValue}>{label}</option>
-   
       ))}
          </select>
 
