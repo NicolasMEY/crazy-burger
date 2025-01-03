@@ -1,6 +1,6 @@
-import React, { PropsWithChildren } from 'react'
+import  { PropsWithChildren } from 'react'
 import styled from 'styled-components';
-import { theme } from '../../theme/theme';
+import { theme } from "@/assets/theme/theme"
 
 // 1ère méthode : classique
 // type headerProps = {

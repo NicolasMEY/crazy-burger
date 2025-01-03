@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components"
-import { theme } from "../../theme/theme"
+import { theme } from "@/assets/theme/theme"
 import Button from "./Button"
 import { TiDelete } from "react-icons/ti"
-import { fadeInFromRight, fadeInFromTop } from "../../theme/animation"
+import { fadeInFromRight, fadeInFromTop } from "@/assets/theme/animation"
 
 type CardProps = {
   title? : string,

@@ -1,6 +1,6 @@
 import { ComponentProps, JSX } from 'react'
 import styled from 'styled-components';
-import { theme } from '../../theme/theme';
+import { theme } from '@/assets/theme/theme' 
 
 type Option = {
   optionValue: string | number | readonly string[] | undefined, 

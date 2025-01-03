@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithRef, JSX } from "react";
 import styled, { css } from "styled-components";
-import { theme } from "../../theme/theme";
+import { theme } from "@/assets/theme/theme"
 
 type TextInputVersion =  "normal" | "minimalist"
 
