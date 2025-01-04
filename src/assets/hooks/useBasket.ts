@@ -1,11 +1,11 @@
 import { useState } from "react"
 import {deepClone, findIndexById, findObjectById, removeObjectById} from "../../utils/array"
 import { setLocalStorage } from "../../utils/window"
-import { BasketProduct } from "@/types/Product"
+import { BasketProductQuantity } from "@/types/Product"
 
 
 export const useBasket = () => {
-  const [basket, setBasket] = useState<BasketProduct[]>([])
+  const [basket, setBasket] = useState<BasketProductQuantity[]>([])
 
 const handleAddToBasket = (idProductToAdd : string, username : string) => { 
 const basketCopy = deepClone(basket)
@@ -19,14 +19,14 @@ if(productAlreadyInBasket){
   createNewBasketProduct(idProductToAdd, basketCopy, setBasket, username)
  }
 
-const incrementProductAlreadyInBasket = (idProductToAdd : string, basketCopy : BasketProduct[], username : string) => {
+const incrementProductAlreadyInBasket = (idProductToAdd : string, basketCopy : BasketProductQuantity[], username : string) => {
   const indexOfBasketProductToIncrement = findIndexById(idProductToAdd, basketCopy)
   basketCopy[indexOfBasketProductToIncrement].quantity += 1
   setBasket(basketCopy)
   setLocalStorage( username,basketCopy )
    }
 
-  const createNewBasketProduct = (idProductToAdd : string, basketCopy : BasketProduct[], setBasket : React.Dispatch<React.SetStateAction<BasketProduct[]>>, username : string) => {
+  const createNewBasketProduct = (idProductToAdd : string, basketCopy : BasketProductQuantity[], setBasket : React.Dispatch<React.SetStateAction<BasketProductQuantity[]>>, username : string) => {
     const newBasketProduct = { id: idProductToAdd, quantity: 1 }
     const newbasket = [newBasketProduct, ...basketCopy]
     setBasket(newbasket)
