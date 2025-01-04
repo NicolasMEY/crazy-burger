@@ -4,7 +4,7 @@ import { EMPTY_PRODUCT } from "../../../../../../../enums/product.jsx";
 import Form from "../Form/Form.jsx";
 import SubmitButton from "./SubmitButton.jsx";
 import { useSuccesMessage } from "../../../../../../../hooks/useSuccesMessage.jsx.jsx";
-import { replaceFrenchCommaWithDot } from "../../../../../../../../utils/maths.js";
+import { replaceFrenchCommaWithDot } from "../../../../../../../../utils/maths";
 
 
 export default function AddForm() {

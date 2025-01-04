@@ -7,7 +7,7 @@ import OrderContext from "../../../context/OrderContext.jsx"
 import { EMPTY_PRODUCT } from '../../../enums/product.jsx';
 import { useMenu } from '../../../hooks/useMenu.jsx';
 import { useBasket } from '../../../hooks/useBasket.jsx';
-import { findObjectById } from '../../../../utils/array.jsx';
+import { findObjectById } from '../../../../utils/array';
 import { useParams } from 'react-router-dom';
 import { initialiseUserSession } from './helpers/initialiseUserSession.jsx';
 

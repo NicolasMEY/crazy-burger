@@ -1,19 +1,21 @@
 // En général les fonctions , surtout celles dans utils, doivent être testées auparavant
 
-export const deepClone = (array) => { return JSON.parse(JSON.stringify(array)) }
+export const deepClone = <T>(array : T[]) : T[]  => { return JSON.parse(JSON.stringify(array)) }
 
 
-export const findObjectById = (id, array) => { return array.find((itemInArray)=> itemInArray.id === id )  }
+type ID = string | number
+
+export const findObjectById = <T extends {id: ID}>(id : ID, array : T[]) : T | undefined => { return array.find((itemInArray)=> itemInArray.id === id )  }
 
 
-export const findIndexById = (idWithUnknownIndex, array) => { return array.findIndex((itemInArray) => itemInArray.id === idWithUnknownIndex
+export const findIndexById = <T extends {id : ID}> (idWithUnknownIndex : ID, array :T[]) : number => { return array.findIndex((itemInArray) => itemInArray.id === idWithUnknownIndex
     ) }
 
-export const removeObjectById = (idOfItemToRemove, array) => {
+export const removeObjectById = <T extends {id : ID}>(idOfItemToRemove : ID, array : T[]) : T[] => {
     return array.filter((item) => item.id !== idOfItemToRemove);
 };
 
-export const isEmpty = (array) => {
+export const isEmpty = (array : []) : boolean => {
     return array.length === 0
 }
 

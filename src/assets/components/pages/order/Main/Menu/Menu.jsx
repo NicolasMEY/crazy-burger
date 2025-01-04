@@ -8,11 +8,11 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
 import {EMPTY_PRODUCT, IMAGE_COMING_SOON, IMAGE_NO_STOCK} from "../../../../../enums/product.jsx"
-import { isEmpty } from "../../../../../../utils/array.jsx";
+import { isEmpty } from "../../../../../../utils/array";
 import Loader from "./Loader.jsx";
 import {TransitionGroup, CSSTransition} from "react-transition-group"
 import { menuAnimation } from "../../../../../theme/animation";
-import { convertStringToBoolean } from "../../../../../../utils/string.js";
+import { convertStringToBoolean } from "../../../../../../utils/string";
 import RibbonAnimated, { ribbonAnimation } from "./RibbonAnimated.jsx";
 
 export default function Menu() {
