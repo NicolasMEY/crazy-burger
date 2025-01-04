@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { EMPTY_PRODUCT } from "../../../../../../../enums/product.jsx";
 import Form from "../Form/Form.jsx";
 import SubmitButton from "./SubmitButton.jsx";
-import { useSuccesMessage } from "../../../../../../../hooks/useSuccesMessage.jsx.jsx";
+import { useSuccesMessage } from "../../../../../../../hooks/useSuccesMessage";
 import { replaceFrenchCommaWithDot } from "../../../../../../../../utils/maths";
 
 

@@ -3,7 +3,7 @@ import OrderContext from "../../../../../../../context/OrderContext.jsx";
 import Form from "../Form/Form.jsx";
 import EditInfoMessage from "./EditInfoMessage.jsx"
 import SavingMessage from "./SavingMessage.jsx"
-import { useSuccesMessage } from "../../../../../../../hooks/useSuccesMessage.jsx.jsx";
+import { useSuccesMessage } from "../../../../../../../hooks/useSuccesMessage";
 
 export default function EditForm() {
   // State
