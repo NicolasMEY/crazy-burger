@@ -1,6 +1,6 @@
 import OrderContext from "../../../../../../../context/OrderContext.jsx";
 import { useContext } from "react";
-import { EMPTY_PRODUCT } from "../../../../../../../enums/product.jsx";
+import { EMPTY_PRODUCT } from "../../../../../../../constants/product";
 import Form from "../Form/Form.jsx";
 import SubmitButton from "./SubmitButton.jsx";
 import { useSuccesMessage } from "../../../../../../../hooks/useSuccesMessage";
