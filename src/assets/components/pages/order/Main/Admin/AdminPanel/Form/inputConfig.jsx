@@ -4,7 +4,7 @@ import { MdOutlineEuro } from "react-icons/md";
 import { FiPackage } from "react-icons/fi";
 import { GoMegaphone } from "react-icons/go";
 
-import { isAvailableOptions, isPublicisedOptions } from "../../../../../../../constants/select.jsx";
+import { isAvailableOptions, isPublicisedOptions } from "../../../../../../../constants/select";
 
 export const getInputTextsConfig = (newProduct) => [
     {
