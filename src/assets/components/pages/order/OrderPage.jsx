@@ -4,7 +4,7 @@ import { theme } from '../../../theme';
 import Navbar from './Navbar/Navbar';
 import Main from './Main/Main';
 import OrderContext from "../../../context/OrderContext.jsx"
-import { EMPTY_PRODUCT } from '../../../enums/product.jsx';
+import { EMPTY_PRODUCT } from '../../../constants/product';
 import { useMenu } from '../../../hooks/useMenu';
 import { useBasket } from '../../../hooks/useBasket';
 import { findObjectById } from '../../../../utils/array';

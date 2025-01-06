@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import BasketCard from './BasketCard';
-import { BASKET_MESSAGE, IMAGE_COMING_SOON } from '../../../../../../enums/product';
+import { BASKET_MESSAGE, IMAGE_COMING_SOON } from '../../../../../../constants/product';
 import { findObjectById } from '../../../../../../../utils/array';
 import { useContext } from 'react';
 import OrderContext from '../../../../../../context/OrderContext';

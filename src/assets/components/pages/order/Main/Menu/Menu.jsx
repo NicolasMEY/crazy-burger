@@ -7,7 +7,7 @@ import OrderContext from "../../../../../context/OrderContext";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
-import {EMPTY_PRODUCT, IMAGE_COMING_SOON, IMAGE_NO_STOCK} from "../../../../../enums/product.jsx"
+import {EMPTY_PRODUCT, IMAGE_COMING_SOON, IMAGE_NO_STOCK} from "../../../../../constants/product"
 import { isEmpty } from "../../../../../../utils/array";
 import Loader from "./Loader.jsx";
 import {TransitionGroup, CSSTransition} from "react-transition-group"

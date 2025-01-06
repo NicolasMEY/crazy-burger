@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { theme } from '../../../../../../theme/index.js';
 import OrderContext from '../../../../../../context/OrderContext.jsx';
 import { getTabSelected, getTabsConfig } from '../getTabsConfig.jsx';
-import { EMPTY_PRODUCT } from '../../../../../../enums/product.jsx';
+import { EMPTY_PRODUCT } from '../../../../../../constants/product';
 
 export default function AdminPanel() {
   const { currentTabSelected, productSelected } = useContext(OrderContext)
